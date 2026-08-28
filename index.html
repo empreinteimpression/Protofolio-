@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --accent-color: #38bdf8;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header h1 span {
+            color: var(--accent-color);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--card-bg);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .contact-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Bonjour, je suis <span>Mon Nom</span></h1>
+            <p>Développeur Passionné | Créateur de projets web</p>
+        </header>
+
+        <section>
+            <h2>À propos</h2>
+            <p>Bienvenue sur mon site ! Je crée des applications web et des projets numériques. Passionné par la technologie et l'apprentissage continu.</p>
+        </section>
+
+        <section>
+            <h2>Mes Projets</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Projet 1</h3>
+                    <p>Description courte de ton premier projet ou application.</p>
+                </div>
+                <div class="card">
+                    <h3>Projet 2</h3>
+                    <p>Description courte de ton deuxième projet remarquable.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Contact</h2>
+            <ul class="contact-links">
+                <li><a href="mailto:email@example.com">Email</a></li>
+                <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+            </ul>
+        </section>
+    </div>
+
+</body>
+</html>
