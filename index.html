@@ -1,18 +1,18 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Photographie</title>
+    <title>Portfolio Photographie - Fond Flou</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #faf9f6;        /* Blanc cassé doux */
+            --bg-color: #faf9f6;
             --card-bg: #ffffff;
-            --text-color: #4a4a4a;     /* Gris charbon adouci */
-            --accent-color: #b5c99a;   /* Vert sauge clair */
+            --text-color: #4a4a4a;
+            --accent-color: #b5c99a;
             --accent-hover: #97a97c;
-            --secondary-accent: #f4ece1;/* Sable très doux */
+            --secondary-accent: #f4ece1;
             --font-main: 'Helvetica Neue', Arial, sans-serif;
         }
 
@@ -30,7 +30,6 @@
             padding-bottom: 60px;
         }
 
-        /* En-tête */
         header {
             text-align: center;
             padding: 60px 20px 30px;
@@ -50,7 +49,6 @@
             letter-spacing: 1px;
         }
 
-        /* Navigation & Filtres */
         nav {
             display: flex;
             justify-content: center;
@@ -77,7 +75,6 @@
             border-color: #e5dccb;
         }
 
-        /* Galerie de photos */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -94,6 +91,7 @@
             background-color: var(--card-bg);
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             aspect-ratio: 4 / 5;
+            cursor: pointer;
         }
 
         .photo-item img {
@@ -105,10 +103,142 @@
         }
 
         .photo-item:hover img {
-            transform: scale(1.03);
+            transform: scale(1.04);
         }
 
-        /* Section Contact & Instagram */
+        /* =========================================
+           LIGHTBOX MODERNE (Visionneuse fond flou)
+           ========================================= */
+        .lightbox {
+            display: none; /* Caché par défaut */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+            overflow: hidden; /* Empêche les barres de défilement */
+        }
+
+        .lightbox.active {
+            display: block;
+        }
+
+        /* 1. L'arrière-plan flou */
+        .lightbox-bg-blurred {
+            position: absolute;
+            top: -50px; /* Légèrement plus grand pour masquer les bords du flou */
+            left: -50px;
+            width: calc(100% + 100px);
+            height: calc(100% + 100px);
+            
+            /* L'image de fond sera définie en JS */
+            background-size: cover;
+            background-position: center;
+            
+            /* L'effet de flou crucial */
+            filter: blur(20px) brightness(0.6); /* Flou + assombrissement pour le contraste */
+            -webkit-filter: blur(20px) brightness(0.6);
+            
+            z-index: 1;
+        }
+
+        /* 2. Le conteneur du contenu (dessus le flou) */
+        .lightbox-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            z-index: 2; /* Devant le fond flou */
+        }
+
+        /* Bandeau haut (transparent ou semi-transparent) */
+        .lightbox-bar-top {
+            width: 100%;
+            height: 70px;
+            background-color: rgba(0, 0, 0, 0.2); /* Très léger voile sombre */
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .lightbox-close {
+            color: #ffffff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .lightbox-close:hover {
+            opacity: 0.8;
+            transform: scale(1.1);
+        }
+
+        /* Zone centrale de l'image */
+        .lightbox-content {
+            position: relative;
+            flex: 1; /* Prend tout l'espace restant */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* L'image nette principale */
+        .lightbox-img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            border-radius: 4px; /* Optionnel : bords légèrement arrondis */
+        }
+
+        /* Boutons de navigation */
+        .lightbox-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            font-size: 1.8rem;
+            padding: 20px 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.2s;
+            backdrop-filter: blur(5px); /* Flou sous les boutons */
+        }
+
+        .lightbox-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .lightbox-btn.prev { left: 30px; }
+        .lightbox-btn.next { right: 30px; }
+
+        /* Bandeau bas */
+        .lightbox-bar-bottom {
+            width: 100%;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           FIN LIGHTBOX
+           ========================================= */
+
+        /* Contact & Instagram */
         #contact {
             max-width: 600px;
             margin: 80px auto 0;
@@ -157,96 +287,5 @@
         input, textarea {
             width: 100%;
             padding: 12px 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            font-family: inherit;
-            font-size: 0.9rem;
-            background-color: var(--bg-color);
-            outline: none;
-            transition: border 0.3s ease;
-        }
-
-        input:focus, textarea:focus {
-            border-color: var(--accent-color);
-        }
-
-        button[type="submit"] {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        button[type="submit"]:hover {
-            background-color: var(--accent-hover);
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Mon Portfolio</h1>
-        <p>Photographie</p>
-    </header>
-
-    <nav>
-        <button class="filter-btn active" onclick="filterGallery('all')">Tous</button>
-        <button class="filter-btn" onclick="filterGallery('portrait')">Portrait</button>
-        <button class="filter-btn" onclick="filterGallery('mariage')">Mariages</button>
-        <button class="filter-btn" onclick="filterGallery('grossesse')">Grossesses</button>
-    </nav>
-
-    <section class="gallery">
-        <div class="photo-item portrait">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Portrait">
-        </div>
-        <div class="photo-item mariage">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Mariage">
-        </div>
-        <div class="photo-item grossesse">
-            <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&w=600&q=80" alt="Grossesse">
-        </div>
-        <div class="photo-item portrait">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Portrait">
-        </div>
-        <div class="photo-item mariage">
-            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Mariage">
-        </div>
-        <div class="photo-item grossesse">
-            <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80" alt="Grossesse">
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Me Contacter</h2>
-
-        <a href="https://instagram.com/votre_compte" target="_blank" class="instagram-box">
-            <i class="fab fa-instagram"></i>
-            <span>@votre_compte</span>
-        </a>
-
-        <form action="#" method="POST">
-            <input type="text" name="name" placeholder="Votre nom" required>
-            <input type="email" name="email" placeholder="Votre email" required>
-            <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
-            <button type="submit">Envoyer</button>
-        </form>
-    </section>
-
-    <script>
-        function filterGallery(category) {
-            const items = document.querySelectorAll('.photo-item');
-            const buttons = document.querySelectorAll('.filter-btn');
-
-            // Mise à jour de la classe active sur les boutons
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            // Filtrage des éléments
-            items.forEach(item => {
-                if (category === 'all' || item
-                    
+            border: 1px solid #e0e0e
+            
