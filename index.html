@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Romain — Photographie</title>
+<title>Romain Photographie</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -15,15 +15,13 @@
     --ink:#f3ede4;
     --ink-soft:#a89e93;
     --rose:#d9a6a4;
-    --rose-dim:#4a3634;
+    --rose-dim:#3a2b29;
     --champagne:#cbae82;
-    --champagne-dim:#463c2c;
     --sage:#a3b295;
-    --sage-dim:#33392c;
+    --sage-dim:#2b3025;
     --clay:#bda88d;
-    --clay-dim:#3d362b;
     --line:#332f2a;
-    --radius:2px;
+    --radius:4px;
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -54,43 +52,68 @@
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
   }
 
-  /* ---------- Bokeh (signature ambient element) ---------- */
-  .bokeh{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
-  .bokeh span{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(4px);
-    opacity:0.5;
-    animation:drift 22s ease-in-out infinite;
-  }
-  @keyframes drift{
-    0%,100%{transform:translate(0,0) scale(1);}
-    50%{transform:translate(14px,-18px) scale(1.08);}
-  }
-
   /* ---------- Header ---------- */
   header{
-    position:fixed;top:0;left:0;right:0;z-index:50;
-    background:rgba(20,18,16,0.78);
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    background:rgba(20,18,16,0.8);
     backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
     border-bottom:1px solid transparent;
     transition:border-color .3s ease;
   }
   header.scrolled{border-bottom:1px solid var(--line);}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;max-width:1180px;margin:0 auto;}
-  .brand{font-family:'Fraunces', serif;font-style:italic;font-size:1.35rem;letter-spacing:0.01em;}
-  .nav-links{display:flex;gap:36px;list-style:none;}
-  .nav-links a{font-size:0.86rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-soft);position:relative;padding-bottom:4px;}
-  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0%;height:1px;background:var(--ink);transition:width .3s ease;}
-  .nav-links a:hover::after{width:100%;}
-  .nav-links a:hover{color:var(--ink);}
-  .nav-right{display:flex;align-items:center;gap:22px;}
+  .brand{font-family:'Fraunces', serif;font-style:italic;font-size:1.3rem;letter-spacing:0.01em;white-space:nowrap;}
+
+  .nav-right{display:flex;align-items:center;gap:18px;}
   .icon-btn{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--line);transition:border-color .25s ease, transform .25s ease;}
   .icon-btn:hover{border-color:var(--ink-soft);transform:translateY(-1px);}
   .icon-btn svg{width:16px;height:16px;stroke:var(--ink);}
-  .btn-contact{font-size:0.82rem;letter-spacing:0.04em;text-transform:uppercase;border:1px solid var(--ink);padding:9px 20px;border-radius:999px;transition:background .25s ease, color .25s ease;}
-  .btn-contact:hover{background:var(--ink);color:var(--bg);}
-  .menu-toggle{display:none;}
+
+  /* Menu hamburger + sous-menu */
+  .menu-wrap{position:relative;}
+  .menu-toggle{
+    display:flex;flex-direction:column;justify-content:center;gap:5px;
+    width:38px;height:38px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    cursor:pointer;
+    align-items:center;
+  }
+  .menu-toggle span{height:1px;width:16px;background:var(--ink);transition:transform .25s ease, opacity .25s ease;}
+  .menu-wrap.open .menu-toggle span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+  .menu-wrap.open .menu-toggle span:nth-child(2){opacity:0;}
+  .menu-wrap.open .menu-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+  .dropdown{
+    position:absolute;top:calc(100% + 12px);right:0;
+    min-width:220px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:10px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+    opacity:0;visibility:hidden;
+    transform:translateY(-8px);
+    transition:opacity .25s ease, transform .25s ease, visibility .25s ease;
+  }
+  .dropdown a{
+    display:block;
+    padding:12px 14px;
+    font-size:0.9rem;
+    letter-spacing:0.02em;
+    border-radius:2px;
+    color:var(--ink-soft);
+    transition:background .2s ease, color .2s ease;
+  }
+  .dropdown a:hover{background:rgba(255,255,255,0.05);color:var(--ink);}
+  .dropdown-sep{height:1px;background:var(--line);margin:8px 6px;}
+  .dropdown a.contact-link{color:var(--ink);font-weight:500;}
+
+  .menu-wrap.open .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+  @media (hover:hover){
+    .menu-wrap:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+  }
 
   /* ---------- Hero ---------- */
   .hero{
@@ -98,16 +121,19 @@
     align-items:center;justify-content:center;text-align:center;
     padding:120px 32px 80px;
     background:var(--bg);
-    overflow:hidden;
   }
-  .hero-eyebrow{font-size:0.8rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:26px;z-index:1;}
-  .hero h1{font-size:clamp(2.6rem, 6vw, 5.2rem);font-weight:400;line-height:1.05;max-width:16ch;z-index:1;}
+  .hero-eyebrow{font-size:0.8rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:26px;}
+  .hero h1{font-size:clamp(2.6rem, 6vw, 5.2rem);font-weight:400;line-height:1.05;max-width:16ch;}
   .hero h1 em{font-style:italic;font-weight:400;color:var(--rose);}
-  .hero p{margin-top:26px;max-width:44ch;color:var(--ink-soft);font-size:1.05rem;z-index:1;}
-  .hero-cats{margin-top:48px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;z-index:1;}
-  .hero-cats a{font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;padding:10px 18px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,0.03);transition:all .25s ease;}
+  .hero p{margin-top:26px;max-width:44ch;color:var(--ink-soft);font-size:1.05rem;}
+  .hero-cats{margin-top:48px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+  .hero-cats a{
+    font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;
+    padding:11px 20px;border:1px solid var(--line);border-radius:var(--radius);
+    background:rgba(255,255,255,0.02);transition:all .25s ease;
+  }
   .hero-cats a:hover{border-color:var(--ink-soft);background:rgba(255,255,255,0.06);}
-  .scroll-cue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);display:flex;flex-direction:column;align-items:center;gap:10px;z-index:1;}
+  .scroll-cue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);display:flex;flex-direction:column;align-items:center;gap:10px;}
   .scroll-cue::after{content:"";width:1px;height:34px;background:linear-gradient(var(--ink-soft), transparent);animation:pulse 2.4s ease-in-out infinite;}
   @keyframes pulse{0%,100%{opacity:0.2;}50%{opacity:0.8;}}
 
@@ -128,11 +154,12 @@
     border-radius:var(--radius);
     overflow:hidden;
     box-shadow:0 24px 50px -18px rgba(0,0,0,0.6);
-    cursor:zoom-in;
-    padding:0;
+    cursor:pointer;
     border:1px solid var(--line);
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
   }
-  .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease, filter .5s ease;}
+  .ph img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transition:transform .5s ease;}
   .ph:hover img{transform:scale(1.04);}
   .ph-a{width:62%;height:78%;left:0;top:4%;z-index:2;}
   .ph-b{width:48%;height:52%;right:0;bottom:0;z-index:3;}
@@ -167,7 +194,7 @@
 
   .field-insta{
     display:flex;align-items:center;gap:12px;border:1px solid var(--line);
-    border-radius:999px;padding:8px 8px 8px 18px;margin-bottom:30px;transition:border-color .25s ease;
+    border-radius:var(--radius);padding:8px 8px 8px 16px;margin-bottom:30px;transition:border-color .25s ease;
   }
   .field-insta:focus-within{border-color:var(--ink);}
   .field-insta svg{width:18px;height:18px;flex-shrink:0;stroke:var(--ink-soft);}
@@ -175,7 +202,7 @@
   .field-insta input:focus{outline:none;}
 
   .submit-btn{
-    width:100%;padding:15px;border:1px solid var(--ink);border-radius:999px;
+    width:100%;padding:15px;border:1px solid var(--ink);border-radius:var(--radius);
     background:var(--ink);color:var(--bg);font-size:0.85rem;letter-spacing:0.05em;
     text-transform:uppercase;cursor:pointer;transition:background .25s ease, color .25s ease;
   }
@@ -190,94 +217,89 @@
 
   /* ---------- Lightbox ---------- */
   .lightbox{
-    position:fixed;inset:0;z-index:100;
-    background:rgba(10,9,8,0.96);
+    position:fixed;inset:0;z-index:1000;
+    background:rgba(8,7,6,0.97);
     display:flex;align-items:center;justify-content:center;
-    opacity:0;pointer-events:none;
-    transition:opacity .35s ease;
+    opacity:0;visibility:hidden;
+    transition:opacity .3s ease, visibility .3s ease;
   }
-  .lightbox.open{opacity:1;pointer-events:auto;}
+  .lightbox.open{opacity:1;visibility:visible;}
 
   .lightbox-bar{
-    position:absolute;left:0;right:0;height:120px;
-    background:rgba(10,9,8,0.55);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
+    position:absolute;left:0;right:0;height:110px;
+    background:rgba(8,7,6,0.5);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
     z-index:2;
+    pointer-events:none;
   }
   .lightbox-bar.top{top:0;}
   .lightbox-bar.bottom{bottom:0;}
 
   .lightbox-img-wrap{
     position:relative;
-    max-width:min(1400px, 92vw);
-    max-height:92vh;
+    width:100%;height:100%;
+    display:flex;align-items:center;justify-content:center;
+    padding:60px 20px;
     z-index:1;
-    display:flex;
-    align-items:center;
-    justify-content:center;
   }
   .lightbox-img-wrap img{
-    max-width:100%;
-    max-height:92vh;
+    max-width:min(1400px, 94vw);
+    max-height:88vh;
+    width:auto;height:auto;
     object-fit:contain;
     opacity:0;
     transform:scale(0.97);
-    transition:opacity .4s ease, transform .4s ease;
+    transition:opacity .35s ease, transform .35s ease;
     box-shadow:0 40px 90px -30px rgba(0,0,0,0.8);
   }
   .lightbox.open .lightbox-img-wrap img{opacity:1;transform:scale(1);}
 
   .lightbox-close{
-    position:absolute;top:28px;right:32px;z-index:3;
-    width:42px;height:42px;border-radius:50%;
+    position:absolute;top:22px;right:24px;z-index:5;
+    width:42px;height:42px;border-radius:var(--radius);
     border:1px solid rgba(243,237,228,0.3);
     display:flex;align-items:center;justify-content:center;
     color:var(--ink);
-    transition:border-color .25s ease, transform .25s ease;
+    background:rgba(20,18,16,0.4);
+    transition:border-color .25s ease;
   }
-  .lightbox-close:hover{border-color:var(--ink);transform:rotate(90deg);}
+  .lightbox-close:hover{border-color:var(--ink);}
   .lightbox-close svg{width:18px;height:18px;}
 
   .lightbox-caption{
-    position:absolute;bottom:38px;left:0;right:0;z-index:3;
+    position:absolute;bottom:32px;left:0;right:0;z-index:5;
     text-align:center;font-size:0.8rem;letter-spacing:0.1em;
     text-transform:uppercase;color:var(--ink-soft);
+    pointer-events:none;
   }
 
   .lightbox-nav{
-    position:absolute;top:50%;transform:translateY(-50%);z-index:3;
-    width:44px;height:44px;border-radius:50%;
+    position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+    width:44px;height:44px;border-radius:var(--radius);
     border:1px solid rgba(243,237,228,0.25);
+    background:rgba(20,18,16,0.4);
     display:flex;align-items:center;justify-content:center;
     color:var(--ink);
     transition:border-color .25s ease, background .25s ease;
   }
   .lightbox-nav:hover{border-color:var(--ink);background:rgba(255,255,255,0.06);}
-  .lightbox-nav.prev{left:24px;}
-  .lightbox-nav.next{right:24px;}
+  .lightbox-nav.prev{left:16px;}
+  .lightbox-nav.next{right:16px;}
   .lightbox-nav svg{width:18px;height:18px;}
 
   /* ---------- Responsive ---------- */
   @media (max-width: 860px){
-    .nav-links{
-      position:fixed;top:0;right:0;height:100vh;width:min(78vw, 320px);
-      background:var(--bg-soft);flex-direction:column;justify-content:center;align-items:flex-start;
-      gap:28px;padding:0 40px;transform:translateX(100%);transition:transform .35s ease;
-      box-shadow:-20px 0 50px rgba(0,0,0,0.4);
-    }
-    .nav-links.open{transform:translateX(0);}
-    .menu-toggle{display:flex;flex-direction:column;gap:5px;width:26px;cursor:pointer;z-index:60;}
-    .menu-toggle span{height:1px;background:var(--ink);width:100%;}
-    .nav-right .btn-contact{display:none;}
+    .brand{font-size:1.1rem;}
     .category .wrap{grid-template-columns:1fr;gap:44px;}
     .category.reverse .wrap{direction:ltr;}
     .cat-gallery{height:340px;}
     .contact-card{padding:32px 24px;}
-    .lightbox-bar{height:80px;}
+    .lightbox-bar{height:78px;}
     .lightbox-nav{width:38px;height:38px;}
-    .lightbox-nav.prev{left:10px;}
-    .lightbox-nav.next{right:10px;}
+    .lightbox-nav.prev{left:8px;}
+    .lightbox-nav.next{right:8px;}
+    .dropdown{min-width:200px;}
   }
 </style>
 </head>
@@ -285,34 +307,31 @@
 
 <header id="site-header">
   <nav class="nav">
-    <a href="#top" class="brand">Romain<span style="font-style:normal;">.</span>ph</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#portrait">Portrait</a></li>
-      <li><a href="#mariages">Mariages</a></li>
-      <li><a href="#grossesses">Grossesses</a></li>
-      <li><a href="#famille">Famille</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <a href="#top" class="brand">Romain Photographie</a>
+
     <div class="nav-right">
       <a class="icon-btn" href="https://instagram.com/votre_nom" target="_blank" rel="noopener" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
       </a>
-      <a class="btn-contact" href="#contact">Contact</a>
-      <div class="menu-toggle" id="menuToggle" aria-label="Menu">
-        <span></span><span></span><span></span>
+
+      <div class="menu-wrap" id="menuWrap">
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="dropdown" id="dropdown">
+          <a href="#portrait">Portrait</a>
+          <a href="#mariages">Mariages</a>
+          <a href="#grossesses">Grossesses</a>
+          <a href="#famille">Famille</a>
+          <div class="dropdown-sep"></div>
+          <a href="#contact" class="contact-link">Contact</a>
+        </div>
       </div>
     </div>
   </nav>
 </header>
 
 <section class="hero" id="top">
-  <div class="bokeh">
-    <span style="width:220px;height:220px;left:10%;top:20%;background:radial-gradient(circle, var(--rose) 0%, transparent 70%);animation-delay:0s;"></span>
-    <span style="width:160px;height:160px;left:76%;top:12%;background:radial-gradient(circle, var(--sage) 0%, transparent 70%);animation-delay:3s;"></span>
-    <span style="width:130px;height:130px;left:64%;top:64%;background:radial-gradient(circle, var(--champagne) 0%, transparent 70%);animation-delay:6s;"></span>
-    <span style="width:90px;height:90px;left:16%;top:72%;background:radial-gradient(circle, var(--clay) 0%, transparent 70%);animation-delay:9s;"></span>
-  </div>
-
   <span class="hero-eyebrow">Photographe — Portraits · Mariages · Grossesses</span>
   <h1>La lumière, <em>simplement</em> racontée.</h1>
   <p>Un regard doux sur les visages, les gestes et les instants qui ne reviennent pas.</p>
@@ -328,7 +347,7 @@
 </section>
 
 <!-- ============ PORTRAIT ============ -->
-<!-- Photos d'illustration temporaires (banque libre de droits, via LoremFlickr). Remplacez src par vos propres photos. -->
+<!-- Photos d'illustration temporaires (banque libre de droits, via LoremFlickr). Remplacez les src par vos propres photos. -->
 <section class="category cat-portrait" id="portrait">
   <div class="wrap">
     <div class="cat-text">
@@ -338,9 +357,15 @@
       <a class="cat-link" href="#contact">Réserver une séance</a>
     </div>
     <div class="cat-gallery" data-gallery="portrait">
-      <button class="ph ph-a" data-full="https://loremflickr.com/1600/2000/portrait,woman/all?lock=101" data-caption="Portrait 01"><img src="https://loremflickr.com/700/900/portrait,woman/all?lock=101" alt="Séance portrait 01" loading="lazy"></button>
-      <button class="ph ph-b" data-full="https://loremflickr.com/1600/1400/portrait,man/all?lock=102" data-caption="Portrait 02"><img src="https://loremflickr.com/700/600/portrait,man/all?lock=102" alt="Séance portrait 02" loading="lazy"></button>
-      <button class="ph ph-c" data-full="https://loremflickr.com/1200/1200/portrait,face/all?lock=103" data-caption="Portrait 03"><img src="https://loremflickr.com/500/500/portrait,face/all?lock=103" alt="Séance portrait 03" loading="lazy"></button>
+      <div class="ph ph-a" data-full="https://loremflickr.com/1600/2000/portrait,woman/all?lock=101" data-caption="Portrait 01" tabindex="0" role="button" aria-label="Agrandir la photo Portrait 01">
+        <img src="https://loremflickr.com/700/900/portrait,woman/all?lock=101" alt="Séance portrait 01" loading="lazy">
+      </div>
+      <div class="ph ph-b" data-full="https://loremflickr.com/1600/1400/portrait,man/all?lock=102" data-caption="Portrait 02" tabindex="0" role="button" aria-label="Agrandir la photo Portrait 02">
+        <img src="https://loremflickr.com/700/600/portrait,man/all?lock=102" alt="Séance portrait 02" loading="lazy">
+      </div>
+      <div class="ph ph-c" data-full="https://loremflickr.com/1200/1200/portrait,face/all?lock=103" data-caption="Portrait 03" tabindex="0" role="button" aria-label="Agrandir la photo Portrait 03">
+        <img src="https://loremflickr.com/500/500/portrait,face/all?lock=103" alt="Séance portrait 03" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
@@ -349,9 +374,15 @@
 <section class="category reverse cat-mariages" id="mariages">
   <div class="wrap">
     <div class="cat-gallery" data-gallery="mariages">
-      <button class="ph ph-a" data-full="https://loremflickr.com/1600/2000/wedding,couple/all?lock=201" data-caption="Mariage 01"><img src="https://loremflickr.com/700/900/wedding,couple/all?lock=201" alt="Mariage 01" loading="lazy"></button>
-      <button class="ph ph-b" data-full="https://loremflickr.com/1600/1400/wedding,rings/all?lock=202" data-caption="Mariage 02"><img src="https://loremflickr.com/700/600/wedding,rings/all?lock=202" alt="Mariage 02" loading="lazy"></button>
-      <button class="ph ph-c" data-full="https://loremflickr.com/1200/1200/wedding,bride/all?lock=203" data-caption="Mariage 03"><img src="https://loremflickr.com/500/500/wedding,bride/all?lock=203" alt="Mariage 03" loading="lazy"></button>
+      <div class="ph ph-a" data-full="https://loremflickr.com/1600/2000/wedding,couple/all?lock=201" data-caption="Mariage 01" tabindex="0" role="button" aria-label="Agrandir la photo Mariage 01">
+        <img src="https://loremflickr.com/700/900/wedding,couple/all?lock=201" alt="Mariage 01" loading="lazy">
+      </div>
+      <div class="ph ph-b" data-full="https://loremflickr.com/1600/1400/wedding,rings/all?lock=202" data-caption="Mariage 02" tabindex="0" role="button" aria-label="Agrandir la photo Mariage 02">
+        <img src="https://loremflickr.com/700/600/wedding,rings/all?lock=202" alt="Mariage 02" loading="lazy">
+      </div>
+      <div class="ph ph-c" data-full="https://loremflickr.com/1200/1200/wedding,bride/all?lock=203" data-caption="Mariage 03" tabindex="0" role="button" aria-label="Agrandir la photo Mariage 03">
+        <img src="https://loremflickr.com/500/500/wedding,bride/all?lock=203" alt="Mariage 03" loading="lazy">
+      </div>
     </div>
     <div class="cat-text">
       <span class="cat-index">02 — Mariages</span>
@@ -372,9 +403,15 @@
       <a class="cat-link" href="#contact">Réserver une séance</a>
     </div>
     <div class="cat-gallery" data-gallery="grossesses">
-      <button class="ph ph-a" data-full="https://loremflickr.com/1600/2000/pregnancy,maternity/all?lock=301" data-caption="Grossesse 01"><img src="https://loremflickr.com/700/900/pregnancy,maternity/all?lock=301" alt="Grossesse 01" loading="lazy"></button>
-      <button class="ph ph-b" data-full="https://loremflickr.com/1600/1400/pregnant,belly/all?lock=302" data-caption="Grossesse 02"><img src="https://loremflickr.com/700/600/pregnant,belly/all?lock=302" alt="Grossesse 02" loading="lazy"></button>
-      <button class="ph ph-c" data-full="https://loremflickr.com/1200/1200/maternity,couple/all?lock=303" data-caption="Grossesse 03"><img src="https://loremflickr.com/500/500/maternity,couple/all?lock=303" alt="Grossesse 03" loading="lazy"></button>
+      <div class="ph ph-a" data-full="https://loremflickr.com/1600/2000/pregnancy,maternity/all?lock=301" data-caption="Grossesse 01" tabindex="0" role="button" aria-label="Agrandir la photo Grossesse 01">
+        <img src="https://loremflickr.com/700/900/pregnancy,maternity/all?lock=301" alt="Grossesse 01" loading="lazy">
+      </div>
+      <div class="ph ph-b" data-full="https://loremflickr.com/1600/1400/pregnant,belly/all?lock=302" data-caption="Grossesse 02" tabindex="0" role="button" aria-label="Agrandir la photo Grossesse 02">
+        <img src="https://loremflickr.com/700/600/pregnant,belly/all?lock=302" alt="Grossesse 02" loading="lazy">
+      </div>
+      <div class="ph ph-c" data-full="https://loremflickr.com/1200/1200/maternity,couple/all?lock=303" data-caption="Grossesse 03" tabindex="0" role="button" aria-label="Agrandir la photo Grossesse 03">
+        <img src="https://loremflickr.com/500/500/maternity,couple/all?lock=303" alt="Grossesse 03" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
@@ -383,19 +420,10 @@
 <section class="category reverse cat-famille" id="famille">
   <div class="wrap">
     <div class="cat-gallery" data-gallery="famille">
-      <button class="ph ph-a" data-full="https://loremflickr.com/1600/2000/family,outdoor/all?lock=401" data-caption="Famille 01"><img src="https://loremflickr.com/700/900/family,outdoor/all?lock=401" alt="Famille 01" loading="lazy"></button>
-      <button class="ph ph-b" data-full="https://loremflickr.com/1600/1400/family,children/all?lock=402" data-caption="Famille 02"><img src="https://loremflickr.com/700/600/family,children/all?lock=402" alt="Famille 02" loading="lazy"></button>
-      <button class="ph ph-c" data-full="https://loremflickr.com/1200/1200/family,laughing/all?lock=403" data-caption="Famille 03"><img src="https://loremflickr.com/500/500/family,laughing/all?lock=403" alt="Famille 03" loading="lazy"></button>
-    </div>
-    <div class="cat-text">
-      <span class="cat-index">04 — Famille</span>
-      <h2>Famille</h2>
-      <p>Des instants simples et vrais, sans pose forcée — pour garder les vôtres tels qu'ils sont vraiment.</p>
-      <a class="cat-link" href="#contact">Réserver une séance</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CONTACT ============ -->
-<section class="contact" id="contact">
-  <div 
+      <div class="ph ph-a" data-full="https://loremflickr.com/1600/2000/family,outdoor/all?lock=401" data-caption="Famille 01" tabindex="0" role="button" aria-label="Agrandir la photo Famille 01">
+        <img src="https://loremflickr.com/700/900/family,outdoor/all?lock=401" alt="Famille 01" loading="lazy">
+      </div>
+      <div class="ph ph-b" data-full="https://loremflickr.com/1600/1400/family,children/all?lock=402" data-caption="Famille 02" tabindex="0" role="button" aria-label="Agrandir la photo Famille 02">
+        <img src="https://loremflickr.com/700/600/family,children/all?lock=402" alt="Famille 02" loading="lazy">
+      </div>
+      <div class="ph ph-c" data-full="https://loremflickr.com/1200/1200/family,laughing/all?lock=403" data-caption="Famille 03" tabindex="0" role="button" aria-label="Agrandir la p
