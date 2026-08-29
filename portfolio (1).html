@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romain Photographie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#141210;
+    --bg-soft:#1b1815;
+    --panel:#1f1c19;
+    --ink:#f3ede4;
+    --ink-soft:#a89e93;
+    --rose:#d9a6a4;
+    --rose-dim:#3a2b29;
+    --champagne:#cbae82;
+    --sage:#a3b295;
+    --sage-dim:#2b3025;
+    --clay:#bda88d;
+    --line:#332f2a;
+    --radius:4px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  button{font:inherit;background:none;border:none;color:inherit;cursor:pointer;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    background:rgba(20,18,16,0.8);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease;
+  }
+  header.scrolled{border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;max-width:1180px;margin:0 auto;}
+  .brand{font-family:'Fraunces', serif;font-style:italic;font-size:1.3rem;letter-spacing:0.01em;white-space:nowrap;}
+
+  .nav-right{display:flex;align-items:center;gap:18px;}
+  .icon-btn{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--line);transition:border-color .25s ease, transform .25s ease;}
+  .icon-btn:hover{border-color:var(--ink-soft);transform:translateY(-1px);}
+  .icon-btn svg{width:16px;height:16px;stroke:var(--ink);}
+
+  /* Menu hamburger + sous-menu */
+  .menu-wrap{position:relative;}
+  .menu-toggle{
+    display:flex;flex-direction:column;justify-content:center;gap:5px;
+    width:38px;height:38px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    cursor:pointer;
+    align-items:center;
+  }
+  .menu-toggle span{height:1px;width:16px;background:var(--ink);transition:transform .25s ease, opacity .25s ease;}
+  .menu-wrap.open .menu-toggle span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+  .menu-wrap.open .menu-toggle span:nth-child(2){opacity:0;}
+  .menu-wrap.open .menu-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+  .dropdown{
+    position:absolute;top:calc(100% + 12px);right:0;
+    min-width:220px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:10px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+    opacity:0;visibility:hidden;
+    transform:translateY(-8px);
+    transition:opacity .25s ease, transform .25s ease, visibility .25s ease;
+  }
+  .dropdown a{
+    display:block;
+    padding:12px 14px;
+    font-size:0.9rem;
+    letter-spacing:0.02em;
+    border-radius:2px;
+    color:var(--ink-soft);
+    transition:background .2s ease, color .2s ease;
+  }
+  .dropdown a:hover{background:rgba(255,255,255,0.05);color:var(--ink);}
+  .dropdown-sep{height:1px;background:var(--line);margin:8px 6px;}
+  .dropdown a.contact-link{color:var(--ink);font-weight:500;}
+
+  .menu-wrap.open .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+  @media (hover:hover){
+    .menu-wrap:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;
+    padding:120px 32px 80px;
+    background:var(--bg);
+  }
+  .hero-eyebrow{font-size:0.8rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:26px;}
+  .hero h1{font-size:clamp(2.6rem, 6vw, 5.2rem);font-weight:400;line-height:1.05;max-width:16ch;}
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--rose);}
+  .hero p{margin-top:26px;max-width:44ch;color:var(--ink-soft);font-size:1.05rem;}
+  .hero-cats{margin-top:48px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+  .hero-cats a{
+    font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;
+    padding:11px 20px;border:1px solid var(--line);border-radius:var(--radius);
+    background:rgba(255,255,255,0.02);transition:all .25s ease;
+  }
+  .hero-cats a:hover{border-color:var(--ink-soft);background:rgba(255,255,255,0.06);}
+  .scroll-cue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .scroll-cue::after{content:"";width:1px;height:34px;background:linear-gradient(var(--ink-soft), transparent);animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:0.2;}50%{opacity:0.8;}}
+
+  /* ---------- Category sections ---------- */
+  .category{position:relative;padding:130px 0;overflow:hidden;}
+  .category .wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;position:relative;z-index:1;}
+  .category.reverse .wrap{direction:rtl;}
+  .category.reverse .wrap > *{direction:ltr;}
+  .cat-text .cat-index{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:18px;display:block;}
+  .cat-text h2{font-size:clamp(2.2rem, 4vw, 3.4rem);font-style:italic;margin-bottom:22px;}
+  .cat-text p{color:var(--ink-soft);max-width:38ch;margin-bottom:30px;}
+  .cat-link{font-size:0.85rem;letter-spacing:0.04em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:4px;display:inline-block;transition:opacity .25s ease;}
+  .cat-link:hover{opacity:0.55;}
+
+  .cat-gallery{position:relative;height:440px;}
+  .ph{
+    position:absolute;
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 24px 50px -18px rgba(0,0,0,0.6);
+    cursor:pointer;
+    border:1px solid var(--line);
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
+  }
+  .ph img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transition:transform .5s ease;}
+  .ph:hover img{transform:scale(1.04);}
+  .ph-a{width:62%;height:78%;left:0;top:4%;z-index:2;}
+  .ph-b{width:48%;height:52%;right:0;bottom:0;z-index:3;}
+  .ph-c{width:34%;height:34%;left:32%;bottom:-6%;z-index:4;box-shadow:0 18px 40px -16px rgba(0,0,0,0.65);}
+
+  .cat-portrait{background:linear-gradient(180deg, transparent, var(--rose-dim) 260%);}
+  .cat-mariages{background:var(--bg-soft);}
+  .cat-grossesses{background:linear-gradient(180deg, transparent, var(--sage-dim) 260%);}
+  .cat-famille{background:var(--bg-soft);}
+
+  /* ---------- Contact ---------- */
+  .contact{position:relative;padding:150px 32px 120px;text-align:center;background:var(--bg);}
+  .contact-eyebrow{font-size:0.8rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:22px;}
+  .contact h2{font-size:clamp(2.1rem, 4.5vw, 3.4rem);font-style:italic;margin-bottom:20px;}
+  .contact > .wrap > p{color:var(--ink-soft);max-width:46ch;margin:0 auto 56px;}
+
+  .contact-card{
+    max-width:560px;margin:0 auto;background:var(--panel);
+    border:1px solid var(--line);border-radius:6px;padding:48px;text-align:left;
+    box-shadow:0 40px 80px -40px rgba(0,0,0,0.7);
+  }
+  .field{margin-bottom:22px;}
+  .field label{display:block;font-size:0.76rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;}
+  .field input,.field textarea{
+    width:100%;border:none;border-bottom:1px solid var(--line);background:transparent;
+    padding:10px 2px;font-family:'Work Sans', sans-serif;font-size:1rem;color:var(--ink);
+    transition:border-color .25s ease;
+  }
+  .field input::placeholder,.field textarea::placeholder{color:#6b6259;}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--ink);}
+  .field textarea{resize:vertical;min-height:90px;}
+
+  .field-insta{
+    display:flex;align-items:center;gap:12px;border:1px solid var(--line);
+    border-radius:var(--radius);padding:8px 8px 8px 16px;margin-bottom:30px;transition:border-color .25s ease;
+  }
+  .field-insta:focus-within{border-color:var(--ink);}
+  .field-insta svg{width:18px;height:18px;flex-shrink:0;stroke:var(--ink-soft);}
+  .field-insta input{border:none;background:transparent;flex:1;font-size:0.95rem;padding:6px 0;}
+  .field-insta input:focus{outline:none;}
+
+  .submit-btn{
+    width:100%;padding:15px;border:1px solid var(--ink);border-radius:var(--radius);
+    background:var(--ink);color:var(--bg);font-size:0.85rem;letter-spacing:0.05em;
+    text-transform:uppercase;cursor:pointer;transition:background .25s ease, color .25s ease;
+  }
+  .submit-btn:hover{background:transparent;color:var(--ink);}
+
+  footer{
+    padding:36px 32px;text-align:center;border-top:1px solid var(--line);color:var(--ink-soft);
+    font-size:0.8rem;display:flex;align-items:center;justify-content:space-between;max-width:1180px;margin:0 auto;
+  }
+  footer a{border-bottom:1px solid transparent;}
+  footer a:hover{border-color:var(--ink-soft);}
+
+  /* ---------- Lightbox ---------- */
+  .lightbox{
+    position:fixed;inset:0;z-index:1000;
+    background:rgba(8,7,6,0.97);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;visibility:hidden;
+    transition:opacity .3s ease, visibility .3s ease;
+  }
+  .lightbox.open{opacity:1;visibility:visible;}
+
+  .lightbox-bar{
+    position:absolute;left:0;right:0;height:110px;
+    background:rgba(8,7,6,0.5);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    z-index:2;
+    pointer-events:none;
+  }
+  .lightbox-bar.top{top:0;}
+  .lightbox-bar.bottom{bottom:0;}
+
+  .lightbox-img-wrap{
+    position:relative;
+    width:100%;height:100%;
+    display:flex;align-items:center;justify-content:center;
+    padding:60px 20px;
+    z-index:1;
+  }
+  .lightbox-img-wrap img{
+    max-width:min(1400px, 94vw);
+    max-height:88vh;
+    width:auto;height:auto;
+    object-fit:contain;
+    opacity:0;
+    transform:scale(0.97);
+    transition:opacity .35s ease, transform .35s ease;
+    box-shadow:0 40px 90px -30px rgba(0,0,0,0.8);
+  }
+  .lightbox.open .lightbox-img-wrap img{opacity:1;transform:scale(1);}
+
+  .lightbox-close{
+    position:absolute;top:22px;right:24px;z-index:5;
+    width:42px;height:42px;border-radius:var(--radius);
+    border:1px solid rgba(243,237,228,0.3);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink);
+    background:rgba(20,18,16,0.4);
+    transition:border-color .25s ease;
+  }
+  .lightbox-close:hover{border-color:var(--ink);}
+  .lightbox-close svg{width:18px;height:18px;}
+
+  .lightbox-caption{
+    position:absolute;bottom:32px;left:0;right:0;z-index:5;
+    text-align:center;font-size:0.8rem;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--ink-soft);
+    pointer-events:none;
+  }
+
+  .lightbox-nav{
+    position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+    width:44px;height:44px;border-radius:var(--radius);
+    border:1px solid rgba(243,237,228,0.25);
+    background:rgba(20,18,16,0.4);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink);
+    transition:border-color .25s ease, background .25s ease;
+  }
+  .lightbox-nav:hover{border-color:var(--ink);background:rgba(255,255,255,0.06);}
+  .lightbox-nav.prev{left:16px;}
+  .lightbox-nav.next{right:16px;}
+  .lightbox-nav svg{width:18px;height:18px;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px){
+    .brand{font-size:1.1rem;}
+    .category .wrap{grid-template-columns:1fr;gap:44px;}
+    .category.reverse .wrap{direction:ltr;}
+    .cat-gallery{height:340px;}
+    .contact-card{padding:32px 24px;}
+    .lightbox-bar{height:78px;}
+    .lightbox-nav{width:38px;height:38px;}
+    .lightbox-nav.prev{left:8px;}
+    .lightbox-nav.next{right:8px;}
+    .dropdown{min-width:200px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <nav class="nav">
+    <a href="#top" class="brand">Romain Photographie</a>
+
+    <div class="nav-right">
+      <a class="icon-btn" href="https://instagram.com/votre_nom" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+      </a>
+
+      <div class="menu-wrap" id="menuWrap">
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="dropdown" id="dropdown">
+          <a href="#portrait">Portrait</a>
+          <a href="#mariages">Mariages</a>
+          <a href="#grossesses">Grossesses</a>
+          <a href="#famille">Famille</a>
+          <div class="dropdown-sep"></div>
+          <a href="#contact" class="contact-link">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <span class="hero-eyebrow">Photographe — Portraits · Mariages · Grossesses</span>
+  <h1>La lumière, <em>simplement</em> racontée.</h1>
+  <p>Un regard doux sur les visages, les gestes et les instants qui ne reviennent pas.</p>
+
+  <div class="hero-cats">
+    <a href="#portrait">Portrait</a>
+    <a href="#mariages">Mariages</a>
+    <a href="#grossesses">Grossesses</a>
+    <a href="#famille">Famille</a>
+  </div>
+
+  <div class="scroll-cue">Découvrir</div>
+</section>
+
+<!-- ============ PORTRAIT ============ -->
+<!-- Photos d'illustration temporaires (banque libre de droits, via LoremFlickr). Remplacez les src par vos propres photos. -->
+<section class="category cat-portrait" id="portrait">
+  <div class="wrap">
+    <div class="cat-text">
+      <span class="cat-index">01 — Portrait</span>
+      <h2>Portrait</h2>
+      <p>Des séances en lumière naturelle, pensées pour révéler ce qui est déjà là — un regard, une posture, une présence.</p>
+      <a class="cat-link" href="#contact">Réserver une séance</a>
+    </div>
+    <div class="cat-gallery" data-gallery="portrait">
+      <div class="ph ph-a" data-full="https://loremflickr.com/1600/2000/portrait,woman/all?lock=101" data-caption="Portrait 01" tabindex="0" role="button" aria-label="Agrandir la photo Portrait 01">
+        <img src="https://loremflickr.com/700/900/portrait,woman/all?lock=101" alt="Séance portrait 01" loading="lazy">
+      </div>
+      <div class="ph ph-b" data-full="https://loremflickr.com/1600/1400/portrait,man/all?lock=102" data-caption="Portrait 02" tabindex="0" role="button" aria-label="Agrandir la photo Portrait 02">
+        <img src="https://loremflickr.com/700/600/portrait,man/all?lock=102" alt="Séance portrait 02" loading="lazy">
+      </div>
+      <div class="ph ph-c" data-full="https://loremflickr.com/1200/1200/portrait,face/all?lock=103" data-caption="Portrait 03" tabindex="0" role="button" aria-label="Agrandir la photo Portrait 03">
+        <img src="https://loremflickr.com/500/500/portrait,face/all?lock=103" alt="Séance portrait 03" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARIAGES ============ -->
+<section class="category reverse cat-mariages" id="mariages">
+  <div class="wrap">
+    <div class="cat-gallery" data-gallery="mariages">
+      <div class="ph ph-a" data-full="https://loremflickr.com/1600/2000/wedding,couple/all?lock=201" data-caption="Mariage 01" tabindex="0" role="button" aria-label="Agrandir la photo Mariage 01">
+        <img src="https://loremflickr.com/700/900/wedding,couple/all?lock=201" alt="Mariage 01" loading="lazy">
+      </div>
+      <div class="ph ph-b" data-full="https://loremflickr.com/1600/1400/wedding,rings/all?lock=202" data-caption="Mariage 02" tabindex="0" role="button" aria-label="Agrandir la photo Mariage 02">
+        <img src="https://loremflickr.com/700/600/wedding,rings/all?lock=202" alt="Mariage 02" loading="lazy">
+      </div>
+      <div class="ph ph-c" data-full="https://loremflickr.com/1200/1200/wedding,bride/all?lock=203" data-caption="Mariage 03" tabindex="0" role="button" aria-label="Agrandir la photo Mariage 03">
+        <img src="https://loremflickr.com/500/500/wedding,bride/all?lock=203" alt="Mariage 03" loading="lazy">
+      </div>
+    </div>
+    <div class="cat-text">
+      <span class="cat-index">02 — Mariages</span>
+      <h2>Mariages</h2>
+      <p>Discret toute la journée, présent aux bons moments : préparatifs, cérémonie, premiers rires de la soirée.</p>
+      <a class="cat-link" href="#contact">Demander un devis</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GROSSESSES ============ -->
+<section class="category cat-grossesses" id="grossesses">
+  <div class="wrap">
+    <div class="cat-text">
+      <span class="cat-index">03 — Grossesses</span>
+      <h2>Grossesses</h2>
+      <p>Des images tout en douceur pour garder trace de cette attente — en studio ou chez vous, à votre rythme.</p>
+      <a class="cat-link" href="#contact">Réserver une séance</a>
+    </div>
+    <div class="cat-gallery" data-gallery="grossesses">
+      <div class="ph ph-a" data-full="https://loremflickr.com/1600/2000/pregnancy,maternity/all?lock=301" data-caption="Grossesse 01" tabindex="0" role="button" aria-label="Agrandir la photo Grossesse 01">
+        <img src="https://loremflickr.com/700/900/pregnancy,maternity/all?lock=301" alt="Grossesse 01" loading="lazy">
+      </div>
+      <div class="ph ph-b" data-full="https://loremflickr.com/1600/1400/pregnant,belly/all?lock=302" data-caption="Grossesse 02" tabindex="0" role="button" aria-label="Agrandir la photo Grossesse 02">
+        <img src="https://loremflickr.com/700/600/pregnant,belly/all?lock=302" alt="Grossesse 02" loading="lazy">
+      </div>
+      <div class="ph ph-c" data-full="https://loremflickr.com/1200/1200/maternity,couple/all?lock=303" data-caption="Grossesse 03" tabindex="0" role="button" aria-label="Agrandir la photo Grossesse 03">
+        <img src="https://loremflickr.com/500/500/maternity,couple/all?lock=303" alt="Grossesse 03" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAMILLE ============ -->
+<section class="category reverse cat-famille" id="famille">
+  <div class="wrap">
+    <div class="cat-gallery" data-gallery="famille">
+      <div class="ph ph-a" data-full="https://loremflickr.com/1600/2000/family,outdoor/all?lock=401" data-caption="Famille 01" tabindex="0" role="button" aria-label="Agrandir la photo Famille 01">
+        <img src="https://loremflickr.com/700/900/family,outdoor/all?lock=401" alt="Famille 01" loading="lazy">
+      </div>
+      <div class="ph ph-b" data-full="https://loremflickr.com/1600/1400/family,children/all?lock=402" data-caption="Famille 02" tabindex="0" role="button" aria-label="Agrandir la photo Famille 02">
+        <img src="https://loremflickr.com/700/600/family,children/all?lock=402" alt="Famille 02" loading="lazy">
+      </div>
+      <div class="ph ph-c" data-full="https://loremflickr.com/1200/1200/family,laughing/all?lock=403" data-caption="Famille 03" tabindex="0" role="button" aria-label="Agrandir la photo Famille 03">
+        <img src="https://loremflickr.com/500/500/family,laughing/all?lock=403" alt="Famille 03" loading="lazy">
+      </div>
+    </div>
+    <div class="cat-text">
+      <span class="cat-index">04 — Famille</span>
+      <h2>Famille</h2>
+      <p>Des instants simples et vrais, sans pose forcée — pour garder les vôtres tels qu'ils sont vraiment.</p>
+      <a class="cat-link" href="#contact">Réserver une séance</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="contact-eyebrow">Contact</span>
+    <h2>Discutons de votre séance</h2>
+    <p>Un projet, une date, une envie particulière — écrivez-moi et je réponds sous 48h.</p>
+
+    <form class="contact-card" id="contactForm" action="mailto:votre@email.com" method="post" enctype="text/plain">
+      <div class="field">
+        <label for="name">Nom</label>
+        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+      </div>
+      <div class="field">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="vous@exemple.com" required>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Type de séance, date envisagée, lieu..."></textarea>
+      </div>
+      <div class="field-insta">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+        <input type="text" id="instagram" name="instagram" placeholder="@votre_compte_instagram">
+      </div>
+      <button type="submit" class="submit-btn">Envoyer le message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Romain Photographie</span>
+  <a href="https://instagram.com/votre_nom" target="_blank" rel="noopener">Instagram</a>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-bar top"></div>
+  <div class="lightbox-bar bottom"></div>
+
+  <button class="lightbox-close" id="lightboxClose" aria-label="Fermer" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l16 16M20 4L4 20"/></svg>
+  </button>
+
+  <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Image précédente" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="lightbox-nav next" id="lightboxNext" aria-label="Image suivante" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+
+  <div class="lightbox-img-wrap">
+    <img src="" alt="" id="lightboxImg">
+  </div>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<script>
+(function(){
+  // Header background on scroll
+  var header = document.getElementById('site-header');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Dropdown menu (hamburger)
+  var menuWrap = document.getElementById('menuWrap');
+  var menuToggle = document.getElementById('menuToggle');
+
+  menuToggle.addEventListener('click', function(e){
+    e.stopPropagation();
+    var isOpen = menuWrap.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', function(e){
+    if (!menuWrap.contains(e.target)) {
+      menuWrap.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  menuWrap.querySelectorAll('.dropdown a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menuWrap.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Lightbox
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCaption = document.getElementById('lightboxCaption');
+  var closeBtn = document.getElementById('lightboxClose');
+  var prevBtn = document.getElementById('lightboxPrev');
+  var nextBtn = document.getElementById('lightboxNext');
+
+  var currentGallery = [];
+  var currentIndex = 0;
+
+  function showImage(){
+    var el = currentGallery[currentIndex];
+    if (!el) return;
+    lightboxImg.src = el.getAttribute('data-full');
+    lightboxImg.alt = el.getAttribute('data-caption') || '';
+    lightboxCaption.textContent = el.getAttribute('data-caption') || '';
+  }
+
+  function openLightbox(galleryEl, index){
+    currentGallery = Array.prototype.slice.call(galleryEl.querySelectorAll('.ph'));
+    currentIndex = index;
+    showImage();
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Event delegation: works regardless of how/when the gallery items were created
+  document.querySelectorAll('.cat-gallery').forEach(function(gallery){
+    var items = Array.prototype.slice.call(gallery.querySelectorAll('.ph'));
+    items.forEach(function(el, i){
+      el.addEventListener('click', function(){
+        openLightbox(gallery, i);
+      });
+      el.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          openLightbox(gallery, i);
+        }
+      });
+    });
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e){
+    if (e.target === lightbox) closeLightbox();
+  });
+  prevBtn.addEventListener('click', function(){
+    currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+    showImage();
+  });
+  nextBtn.addEventListener('click', function(){
+    currentIndex = (currentIndex + 1) % currentGallery.length;
+    showImage();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  });
+})();
+</script>
+
+</body>
+</html>
