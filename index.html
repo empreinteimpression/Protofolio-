@@ -225,16 +225,18 @@
   }
   .lightbox.open{opacity:1;visibility:visible;}
 
-  .lightbox-bar{
-    position:absolute;left:0;right:0;height:110px;
-    background:rgba(8,7,6,0.5);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-    z-index:2;
-    pointer-events:none;
+  .lightbox-bg{
+    position:absolute;
+    inset:-60px;
+    background-size:cover;
+    background-position:center;
+    filter:blur(55px) brightness(0.42) saturate(1.05);
+    transform:scale(1.1);
+    z-index:0;
+    opacity:0;
+    transition:opacity .4s ease;
   }
-  .lightbox-bar.top{top:0;}
-  .lightbox-bar.bottom{bottom:0;}
+  .lightbox.open .lightbox-bg{opacity:1;}
 
   .lightbox-img-wrap{
     position:relative;
@@ -295,7 +297,6 @@
     .category.reverse .wrap{direction:ltr;}
     .cat-gallery{height:340px;}
     .contact-card{padding:32px 24px;}
-    .lightbox-bar{height:78px;}
     .lightbox-nav{width:38px;height:38px;}
     .lightbox-nav.prev{left:8px;}
     .lightbox-nav.next{right:8px;}
@@ -475,8 +476,7 @@
 
 <!-- ============ LIGHTBOX ============ -->
 <div class="lightbox" id="lightbox" aria-hidden="true">
-  <div class="lightbox-bar top"></div>
-  <div class="lightbox-bar bottom"></div>
+  <div class="lightbox-bg" id="lightboxBg"></div>
 
   <button class="lightbox-close" id="lightboxClose" aria-label="Fermer" type="button">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l16 16M20 4L4 20"/></svg>
@@ -529,6 +529,7 @@
 
   // Lightbox
   var lightbox = document.getElementById('lightbox');
+  var lightboxBg = document.getElementById('lightboxBg');
   var lightboxImg = document.getElementById('lightboxImg');
   var lightboxCaption = document.getElementById('lightboxCaption');
   var closeBtn = document.getElementById('lightboxClose');
@@ -541,6 +542,10 @@
   function showImage(){
     var el = currentGallery[currentIndex];
     if (!el) return;
+    var thumbImg = el.querySelector('img');
+    if (thumbImg) {
+      lightboxBg.style.backgroundImage = 'url(' + thumbImg.src + ')';
+    }
     lightboxImg.src = el.getAttribute('data-full');
     lightboxImg.alt = el.getAttribute('data-caption') || '';
     lightboxCaption.textContent = el.getAttribute('data-caption') || '';
