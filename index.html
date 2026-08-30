@@ -426,4 +426,178 @@
       <div class="ph ph-b" data-full="https://loremflickr.com/1600/1400/family,children/all?lock=402" data-caption="Famille 02" tabindex="0" role="button" aria-label="Agrandir la photo Famille 02">
         <img src="https://loremflickr.com/700/600/family,children/all?lock=402" alt="Famille 02" loading="lazy">
       </div>
-      <div class="ph ph-c" data-full="https://loremflickr.com/1200/1200/family,laughing/all?lock=403" data-caption="Famille 03" tabindex="0" role="button" aria-label="Agrandir la p
+      <div class="ph ph-c" data-full="https://loremflickr.com/1200/1200/family,laughing/all?lock=403" data-caption="Famille 03" tabindex="0" role="button" aria-label="Agrandir la photo Famille 03">
+        <img src="https://loremflickr.com/500/500/family,laughing/all?lock=403" alt="Famille 03" loading="lazy">
+      </div>
+    </div>
+    <div class="cat-text">
+      <span class="cat-index">04 — Famille</span>
+      <h2>Famille</h2>
+      <p>Des instants simples et vrais, sans pose forcée — pour garder les vôtres tels qu'ils sont vraiment.</p>
+      <a class="cat-link" href="#contact">Réserver une séance</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="contact-eyebrow">Contact</span>
+    <h2>Discutons de votre séance</h2>
+    <p>Un projet, une date, une envie particulière — écrivez-moi et je réponds sous 48h.</p>
+
+    <form class="contact-card" id="contactForm" action="mailto:votre@email.com" method="post" enctype="text/plain">
+      <div class="field">
+        <label for="name">Nom</label>
+        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+      </div>
+      <div class="field">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="vous@exemple.com" required>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Type de séance, date envisagée, lieu..."></textarea>
+      </div>
+      <div class="field-insta">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+        <input type="text" id="instagram" name="instagram" placeholder="@votre_compte_instagram">
+      </div>
+      <button type="submit" class="submit-btn">Envoyer le message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Romain Photographie</span>
+  <a href="https://instagram.com/votre_nom" target="_blank" rel="noopener">Instagram</a>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-bar top"></div>
+  <div class="lightbox-bar bottom"></div>
+
+  <button class="lightbox-close" id="lightboxClose" aria-label="Fermer" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l16 16M20 4L4 20"/></svg>
+  </button>
+
+  <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Image précédente" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="lightbox-nav next" id="lightboxNext" aria-label="Image suivante" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+
+  <div class="lightbox-img-wrap">
+    <img src="" alt="" id="lightboxImg">
+  </div>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<script>
+(function(){
+  // Header background on scroll
+  var header = document.getElementById('site-header');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Dropdown menu (hamburger)
+  var menuWrap = document.getElementById('menuWrap');
+  var menuToggle = document.getElementById('menuToggle');
+
+  menuToggle.addEventListener('click', function(e){
+    e.stopPropagation();
+    var isOpen = menuWrap.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', function(e){
+    if (!menuWrap.contains(e.target)) {
+      menuWrap.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  menuWrap.querySelectorAll('.dropdown a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menuWrap.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Lightbox
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCaption = document.getElementById('lightboxCaption');
+  var closeBtn = document.getElementById('lightboxClose');
+  var prevBtn = document.getElementById('lightboxPrev');
+  var nextBtn = document.getElementById('lightboxNext');
+
+  var currentGallery = [];
+  var currentIndex = 0;
+
+  function showImage(){
+    var el = currentGallery[currentIndex];
+    if (!el) return;
+    lightboxImg.src = el.getAttribute('data-full');
+    lightboxImg.alt = el.getAttribute('data-caption') || '';
+    lightboxCaption.textContent = el.getAttribute('data-caption') || '';
+  }
+
+  function openLightbox(galleryEl, index){
+    currentGallery = Array.prototype.slice.call(galleryEl.querySelectorAll('.ph'));
+    currentIndex = index;
+    showImage();
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Event delegation: works regardless of how/when the gallery items were created
+  document.querySelectorAll('.cat-gallery').forEach(function(gallery){
+    var items = Array.prototype.slice.call(gallery.querySelectorAll('.ph'));
+    items.forEach(function(el, i){
+      el.addEventListener('click', function(){
+        openLightbox(gallery, i);
+      });
+      el.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          openLightbox(gallery, i);
+        }
+      });
+    });
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e){
+    if (e.target === lightbox) closeLightbox();
+  });
+  prevBtn.addEventListener('click', function(){
+    currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+    showImage();
+  });
+  nextBtn.addEventListener('click', function(){
+    currentIndex = (currentIndex + 1) % currentGallery.length;
+    showImage();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  });
+})();
+</script>
+
+</body>
+</html>
