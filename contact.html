@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Romain photographie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #faf8f3;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #faf8f3;
+            padding: 30px 0;
+            border-bottom: 1px solid #e8e6e0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #999;
+        }
+
+        .contact-btn {
+            background: transparent;
+            color: #333;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s, border 0.3s;
+            border: 1px solid #333;
+            cursor: pointer;
+        }
+
+        .contact-btn.active {
+            background: #000;
+            color: #fff;
+        }
+
+        .contact-btn:hover {
+            background: #f0f0f0;
+            color: #000;
+        }
+
+        .contact-btn.active:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        /* Contact Section */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-hero {
+            width: 100%;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: 40px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .contact-hero p {
+            font-size: 16px;
+            color: #666;
+            max-width: 550px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .contact-btn-large {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 16px 45px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: background 0.3s;
+        }
+
+        .contact-btn-large:hover {
+            background: #333;
+        }
+
+        .contact-note {
+            margin-top: 30px;
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* Footer */
+        footer {
+            background: #faf8f3;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #e8e6e0;
+        }
+
+        .copyright {
+            color: #999;
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 18px;
+            }
+
+            .nav-menu {
+                gap: 20px;
+            }
+
+            .nav-menu a {
+                font-size: 12px;
+            }
+
+            .contact-hero h1 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 15px;
+                letter-spacing: 0.5px;
+            }
+
+            .nav-menu {
+                gap: 10px;
+                font-size: 12px;
+            }
+
+            .contact-btn {
+                padding: 10px 20px;
+                font-size: 11px;
+            }
+
+            .contact-hero {
+                padding: 60px 0;
+            }
+
+            .contact-hero h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Romain photographie</div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#accueil" class="nav-link">Accueil</a></li>
+                    <li><a href="index.html#galeries" class="nav-link">Galeries</a></li>
+                    <li><a href="contact.html" class="contact-btn active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="contact-hero">
+                <h1>Discutons de votre séance</h1>
+                <p>
+                    Un projet, une date, une envie particulière — écrivez-moi et je réponds sous 48h.
+                </p>
+                <a href="https://www.instagram.com/direct/t/empreinteimpression" target="_blank" class="contact-btn-large">📸 Message Instagram</a>
+                <p class="contact-note">Réponse sous 48h en moyenne</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                © 2026 Romain photographie. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
