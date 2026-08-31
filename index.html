@@ -68,7 +68,6 @@
             background-position: center;
             filter: blur(20px) brightness(0.4);
             z-index: -1;
-            transition: background-image 0.3s ease;
         }
 
         /* Image centrale nette */
@@ -78,7 +77,6 @@
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             object-fit: contain;
-            user-select: none;
         }
 
         /* Bouton de fermeture */
@@ -90,36 +88,6 @@
             color: white;
             cursor: pointer;
             z-index: 1001;
-            user-select: none;
-        }
-
-        /* Flèches de navigation */
-        .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            font-size: 30px;
-            border: none;
-            padding: 15px 20px;
-            cursor: pointer;
-            border-radius: 50%;
-            z-index: 1001;
-            user-select: none;
-            transition: background 0.2s ease;
-        }
-
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .prev {
-            left: 20px;
-        }
-
-        .next {
-            right: 20px;
         }
     </style>
 </head>
@@ -130,90 +98,48 @@
     <!-- Galerie 1 : Nature -->
     <h2>Nature</h2>
     <div class="galerie">
-        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" alt="Brumes sur les montagnes">
-        <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=800&q=80" alt="Parc national et lac">
-        <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80" alt="Forêt ensoleillée">
+        <img src="https://picsum.photos/id/1015/800/600" alt="Lac et montagne">
+        <img src="https://picsum.photos/id/1018/800/600" alt="Campagne">
     </div>
 
     <!-- Galerie 2 : Voyage -->
     <h2>Voyage</h2>
     <div class="galerie">
-        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80" alt="Voyageur avec carte">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Plage tropicale">
-        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80" alt="Road trip en voiture">
+        <img src="https://picsum.photos/id/1036/800/600" alt="Ville">
+        <img src="https://picsum.photos/id/1040/800/600" alt="Château">
     </div>
 
     <!-- Lightbox (Vue agrandie) -->
     <div class="modal" id="lightbox">
         <span class="fermer" id="btn-fermer">&times;</span>
-        <button class="nav-btn prev" id="btn-prev">&#10094;</button>
-        <button class="nav-btn next" id="btn-next">&#10095;</button>
         <div class="modal-bg" id="modal-bg"></div>
         <img class="modal-img" id="modal-img" src="" alt="Vue agrandie">
     </div>
 
     <script>
-        const images = Array.from(document.querySelectorAll('.galerie img'));
+        // On sélectionne TOUTES les images contenues dans un bloc de classe "galerie"
+        const images = document.querySelectorAll('.galerie img');
         const modal = document.getElementById('lightbox');
         const modalImg = document.getElementById('modal-img');
         const modalBg = document.getElementById('modal-bg');
         const btnFermer = document.getElementById('btn-fermer');
-        const btnPrev = document.getElementById('btn-prev');
-        const btnNext = document.getElementById('btn-next');
 
-        let currentIndex = 0;
-
-        // Met à jour l'image affichée dans la lightbox
-        function updateLightbox(index) {
-            currentIndex = index;
-            const src = images[currentIndex].getAttribute('src');
-            modalImg.src = src;
-            modalBg.style.backgroundImage = `url('${src}')`;
-        }
-
-        // Événement clic sur chaque image
-        images.forEach((img, index) => {
+        // Ajout de l'événement clic sur chaque image de toutes les galeries
+        images.forEach(img => {
             img.addEventListener('click', () => {
-                updateLightbox(index);
+                const src = img.getAttribute('src');
+                modalImg.src = src;
+                modalBg.style.backgroundImage = `url('${src}')`;
                 modal.classList.add('active');
             });
         });
 
-        // Navigation Suivante
-        function nextImage() {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateLightbox(currentIndex);
-        }
-
-        // Navigation Précédente
-        function prevImage() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateLightbox(currentIndex);
-        }
-
-        btnNext.addEventListener('click', (e) => {
-            e.stopPropagation();
-            nextImage();
-        });
-
-        btnPrev.addEventListener('click', (e) => {
-            e.stopPropagation();
-            prevImage();
-        });
-
-        // Navigation au clavier (Flèches et Echap)
-        document.addEventListener('keydown', (e) => {
-            if (!modal.classList.contains('active')) return;
-            if (e.key === 'ArrowRight') nextImage();
-            if (e.key === 'ArrowLeft') prevImage();
-            if (e.key === 'Escape') modal.classList.remove('active');
-        });
-
-        // Fermeture
+        // Fermeture au clic sur le bouton "X"
         btnFermer.addEventListener('click', () => {
             modal.classList.remove('active');
         });
 
+        // Fermeture au clic en dehors de l'image
         modal.addEventListener('click', (e) => {
             if (e.target === modal || e.target === modalBg) {
                 modal.classList.remove('active');
