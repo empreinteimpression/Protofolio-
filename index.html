@@ -19,7 +19,7 @@
             padding-bottom: 10px;
         }
 
-        /* Grille de galerie réutilisable pour TOUTES les sections */
+        /* Grille de galerie réutilisable */
         .galerie {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -40,7 +40,7 @@
             transform: scale(1.03);
         }
 
-        /* Fenêtre Modal (Lightbox) */
+        /* Lightbox */
         .modal {
             position: fixed;
             top: 0;
@@ -98,15 +98,24 @@
     <!-- Galerie 1 : Nature -->
     <h2>Nature</h2>
     <div class="galerie">
-        <img src="https://picsum.photos/id/1015/800/600" alt="Lac et montagne">
-        <img src="https://picsum.photos/id/1018/800/600" alt="Campagne">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Lac et montagnes">
+        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05" alt="Forêt dans le brouillard">
+        <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff" alt="Paysage montagneux">
     </div>
 
     <!-- Galerie 2 : Voyage -->
     <h2>Voyage</h2>
     <div class="galerie">
-        <img src="https://picsum.photos/id/1036/800/600" alt="Ville">
-        <img src="https://picsum.photos/id/1040/800/600" alt="Château">
+        <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a" alt="Paris et la Tour Eiffel">
+        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad" alt="Londres de nuit">
+        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34" alt="Ruelle pittoresque">
+    </div>
+
+    <!-- Galerie 3 : Animaux -->
+    <h2>Animaux</h2>
+    <div class="galerie">
+        <img src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef6" alt="Panda mangeant du bambou">
+        <img src="https://images.unsplash.com/photo-1534188753412-3e26d0d618d6" alt="Renard roux">
     </div>
 
     <!-- Lightbox (Vue agrandie) -->
@@ -117,14 +126,12 @@
     </div>
 
     <script>
-        // On sélectionne TOUTES les images contenues dans un bloc de classe "galerie"
         const images = document.querySelectorAll('.galerie img');
         const modal = document.getElementById('lightbox');
         const modalImg = document.getElementById('modal-img');
         const modalBg = document.getElementById('modal-bg');
         const btnFermer = document.getElementById('btn-fermer');
 
-        // Ajout de l'événement clic sur chaque image de toutes les galeries
         images.forEach(img => {
             img.addEventListener('click', () => {
                 const src = img.getAttribute('src');
@@ -134,12 +141,10 @@
             });
         });
 
-        // Fermeture au clic sur le bouton "X"
         btnFermer.addEventListener('click', () => {
             modal.classList.remove('active');
         });
 
-        // Fermeture au clic en dehors de l'image
         modal.addEventListener('click', (e) => {
             if (e.target === modal || e.target === modalBg) {
                 modal.classList.remove('active');
