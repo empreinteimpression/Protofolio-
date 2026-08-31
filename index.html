@@ -368,6 +368,17 @@
             color: #000;
         }
 
+        .lightbox-counter {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #333;
+            font-size: 13px;
+            letter-spacing: 1px;
+            z-index: 1002;
+        }
+
         .lightbox-arrow {
             position: fixed;
             top: 50%;
@@ -804,6 +815,7 @@
         <div class="lightbox-content">
             <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
             <img id="lightbox-img" class="lightbox-img" src="" alt="">
+            <span class="lightbox-counter" id="lightbox-counter"></span>
         </div>
         <button class="lightbox-arrow lightbox-next" onclick="nextLightboxImage()" aria-label="Image suivante">&#10095;</button>
     </div>
@@ -872,6 +884,7 @@
             lightbox.style.backgroundImage = `url('${imgSrc}')`;
             lightbox.style.backgroundSize = 'cover';
             lightbox.style.backgroundPosition = 'center';
+            document.getElementById('lightbox-counter').textContent = (index + 1) + ' / ' + currentGalleryImages.length;
         }
 
         function prevLightboxImage() {
