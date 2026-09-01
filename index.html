@@ -859,8 +859,9 @@
         function openLightbox(el, imgSrc) {
             // Build the list of images from the currently visible gallery
             const gallery = el.closest('.gallery-grid');
-            currentGalleryImages = Array.from(gallery.querySelectorAll('.gallery-item img')).map(img => img.src);
-            currentImageIndex = currentGalleryImages.indexOf(imgSrc);
+            const items = Array.from(gallery.querySelectorAll('.gallery-item'));
+            currentGalleryImages = items.map(item => item.querySelector('img').src);
+            currentImageIndex = items.indexOf(el);
             if (currentImageIndex === -1) currentImageIndex = 0;
 
             const lightbox = document.getElementById('lightbox');
