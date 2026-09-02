@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Romain photographie</title>
+    <title>Romain photographie - Photographe</title>
 
     <style>
-        /* =========================================================
-           RESET
-        ========================================================= */
-
         * {
             margin: 0;
             padding: 0;
@@ -23,525 +18,400 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #faf8f3;
-            color: #333;
             line-height: 1.6;
-            overflow-x: hidden;
+            color: #333;
+            background: #faf8f3;
         }
 
-        img {
-            display: block;
-            max-width: 100%;
-        }
-
-        button,
-        a {
-            font-family: inherit;
-        }
-
-        a {
-            color: inherit;
-        }
-
-        /* =========================================================
-           HEADER
-        ========================================================= */
+        /* =========================
+           HEADER & NAVIGATION
+        ========================= */
 
         header {
-            position: fixed;
+            background: #faf8f3;
+            padding: 30px 0;
+            border-bottom: 1px solid #e8e6e0;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(250, 248, 243, 0.94);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(232, 230, 224, 0.8);
-            z-index: 1000;
-            transition: all 0.3s ease;
+            z-index: 100;
         }
 
-        .header-inner {
-            max-width: 1300px;
-            margin: auto;
-            padding: 14px 25px;
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         nav {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 30px;
-        }
-
-        /* =========================================================
-           MARQUE / LOGO
-        ========================================================= */
-
-        .brand {
-            display: flex;
             align-items: center;
-            gap: 14px;
-            text-decoration: none;
-            color: #000;
-            flex-shrink: 0;
-        }
-
-        .future-logo {
-            width: 52px;
-            height: 52px;
-            border: 1px dashed #aaa;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8px;
-            letter-spacing: 0.5px;
-            color: #999;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .brand:hover .future-logo {
-            border-color: #555;
-            transform: rotate(5deg);
         }
 
         .logo {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
-            letter-spacing: 1.5px;
-            white-space: nowrap;
+            color: #000;
+            letter-spacing: 1px;
         }
 
-        /* =========================================================
-           MENU
-        ========================================================= */
+        .logo-link {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
 
         .nav-menu {
             display: flex;
-            align-items: center;
-            gap: 35px;
+            gap: 40px;
             list-style: none;
+            align-items: center;
         }
 
         .nav-menu a {
             text-decoration: none;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             color: #333;
-            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
         }
 
         .nav-menu a:hover {
             color: #999;
         }
 
-        .nav-contact {
-            border: 1px solid #333;
-            padding: 10px 20px;
-            border-radius: 3px;
+        .nav-menu a.active {
+            color: #000;
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
         }
 
-        .nav-contact:hover {
-            background: #000;
-            color: #fff !important;
-        }
-
-        /* =========================================================
-           HERO
-        ========================================================= */
-
-        .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 650px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .hero-image {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            filter: brightness(0.72);
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(
-                    to bottom,
-                    rgba(0,0,0,0.15),
-                    rgba(0,0,0,0.42)
-                );
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: #fff;
-            padding: 30px;
-            animation: heroAppear 1.2s ease forwards;
-        }
-
-        .hero-small {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        .hero h1 {
-            font-size: clamp(48px, 7vw, 90px);
-            font-weight: 300;
-            letter-spacing: 3px;
-            line-height: 1;
-            margin-bottom: 25px;
-        }
-
-        .hero-subtitle {
-            font-size: 18px;
-            font-weight: 300;
-            max-width: 650px;
-            margin: 0 auto 35px;
-            line-height: 1.8;
-        }
-
-        .hero-button {
-            display: inline-block;
-            padding: 15px 32px;
-            border: 1px solid rgba(255,255,255,0.8);
-            color: #fff;
+        .contact-btn {
+            background: transparent;
+            color: #333;
+            padding: 12px 30px;
+            border-radius: 4px;
             text-decoration: none;
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
+            font-size: 13px;
+            transition: color 0.3s, border 0.3s, background 0.3s;
+            border: 1px solid #333;
+            cursor: pointer;
         }
 
-        .hero-button:hover {
-            background: #fff;
+        .contact-btn:hover {
+            background: #f0f0f0;
             color: #000;
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            padding: 120px 0;
+            text-align: center;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url('images/mariage/FB_IMG_1788292460682.jpg') center/cover;
+            background-attachment: fixed;
             color: #fff;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            z-index: 2;
-            opacity: 0.8;
+            position: relative;
         }
 
-        .scroll-indicator::after {
-            content: "";
-            display: block;
-            width: 1px;
-            height: 35px;
-            background: #fff;
-            margin: 10px auto 0;
-        }
-
-        /* =========================================================
-           INTRODUCTION
-        ========================================================= */
-
-        .intro {
-            max-width: 900px;
-            margin: auto;
-            padding: 120px 25px 90px;
-            text-align: center;
-        }
-
-        .section-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #999;
-            margin-bottom: 18px;
-        }
-
-        .intro h2 {
-            font-size: clamp(32px, 5vw, 50px);
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #fff;
             font-weight: 300;
-            color: #111;
-            margin-bottom: 25px;
+            letter-spacing: 2px;
         }
 
-        .intro p {
-            max-width: 680px;
-            margin: auto;
-            font-size: 16px;
-            color: #666;
-            line-height: 2;
+        .hero p {
+            font-size: 18px;
+            color: #f0f0f0;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-style: italic;
         }
 
-        /* =========================================================
-           GALERIES
-        ========================================================= */
-
-        .gallery-section {
-            max-width: 1300px;
-            margin: auto;
-            padding: 30px 25px 120px;
+        .hero-btn {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 15px 45px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.3s;
         }
 
-        .gallery-heading {
-            text-align: center;
-            margin-bottom: 50px;
+        .hero-btn:hover {
+            background: #333;
         }
 
-        .gallery-heading h2 {
-            font-size: clamp(34px, 5vw, 55px);
-            font-weight: 300;
-            color: #111;
-        }
-
-        .gallery-heading p {
-            color: #888;
-            margin-top: 10px;
-        }
-
-        /* =========================================================
-           FILTRES
-        ========================================================= */
+        /* =========================
+           CATEGORIES
+        ========================= */
 
         .categories {
             display: flex;
             justify-content: center;
+            gap: 30px;
+            padding: 42px 0;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 55px;
+            border-bottom: 1px solid #e8e6e0;
+            background: rgba(250, 248, 243, 0.92);
         }
 
-        .category-btn {
-            background: transparent;
-            border: 1px solid #d2d0ca;
-            padding: 11px 20px;
-            color: #555;
-            font-size: 11px;
+        .category-container {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 42px;
+            flex-wrap: wrap;
+        }
+
+        .category-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
-            border-radius: 2px;
-            transition: all 0.3s ease;
+            transition: color 0.3s;
+            border: none;
+            background: none;
+            padding: 0;
         }
 
-        .category-btn:hover,
-        .category-btn.active {
-            background: #111;
-            border-color: #111;
-            color: #fff;
+        .category-link:hover,
+        .category-link.active {
+            color: #000;
         }
 
-        /* =========================================================
-           GALERIE MASONRY
-        ========================================================= */
-
-        .gallery {
-            display: none;
-            columns: 3 280px;
-            column-gap: 15px;
+        .category-link.active {
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
         }
 
-        .gallery.active {
-            display: block;
-            animation: galleryAppear 0.5s ease;
+        /* =========================
+           GALLERY
+        ========================= */
+
+        .gallery-section {
+            padding: 90px 0 110px;
+            scroll-margin-top: 120px;
+        }
+
+        .gallery-title {
+            font-size: clamp(30px, 4vw, 42px);
+            margin-bottom: 16px;
+            text-align: center;
+            color: #171717;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+        }
+
+        .gallery-description {
+            text-align: center;
+            color: #777;
+            margin-bottom: 55px;
+            font-size: 15px;
+            line-height: 1.9;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gallery-grid {
+            columns: 3 320px;
+            column-gap: 24px;
+            margin-bottom: 20px;
         }
 
         .gallery-item {
-            break-inside: avoid;
-            margin-bottom: 15px;
             position: relative;
-            cursor: pointer;
+            break-inside: avoid;
+            margin: 0 0 24px;
             overflow: hidden;
-            background: #e8e6e0;
+            background: #efede8;
+            border-radius: 2px;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 38px rgba(0, 0, 0, 0.10);
         }
 
         .gallery-item img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.6s ease;
-        }
-
-        .gallery-item::after {
-            content: "Voir";
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0,0,0,0.25);
-            color: #fff;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: transform 0.5s ease;
         }
 
         .gallery-item:hover img {
-            transform: scale(1.035);
+            transform: scale(1.015);
         }
 
-        .gallery-item:hover::after {
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(0,0,0,0.35),
+                rgba(0,0,0,0.02) 45%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            padding: 18px;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
             opacity: 1;
         }
 
-        /* =========================================================
-           SECTION MARIAGE
-        ========================================================= */
-
-        .featured {
-            max-width: 1300px;
-            margin: 0 auto 100px;
-            padding: 0 25px;
-        }
-
-        .featured-inner {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            min-height: 550px;
-            background: #eeeae2;
-        }
-
-        .featured-photo {
-            min-height: 550px;
-            overflow: hidden;
-        }
-
-        .featured-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .featured:hover .featured-photo img {
-            transform: scale(1.02);
-        }
-
-        .featured-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 70px;
-        }
-
-        .featured-text h2 {
-            font-size: clamp(35px, 4vw, 55px);
-            font-weight: 300;
-            line-height: 1.15;
-            margin-bottom: 25px;
-            color: #111;
-        }
-
-        .featured-text p {
-            color: #666;
-            line-height: 1.9;
-            margin-bottom: 30px;
-        }
-
-        .featured-link {
-            display: inline-block;
-            width: fit-content;
-            border-bottom: 1px solid #333;
-            padding-bottom: 6px;
-            text-decoration: none;
+        .gallery-item-overlay span {
+            color: #fff;
+            font-weight: 500;
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
         }
 
-        /* =========================================================
+        /* =========================
            LIGHTBOX
-        ========================================================= */
+        ========================= */
 
         .lightbox {
+            display: none;
             position: fixed;
             inset: 0;
-            background: rgba(10,10,10,0.97);
-            display: none;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
             align-items: center;
             justify-content: center;
-            z-index: 3000;
-            padding: 40px 80px;
+            padding: 30px 80px;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        .lightbox.open {
+        .lightbox.active {
             display: flex;
-            animation: fadeIn 0.25s ease;
         }
 
+        /* Fond sombre + flou */
+        .lightbox.active::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(250, 248, 243, 0.78);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 999;
+        }
+
+        /*
+         * IMPORTANT :
+         * Le conteneur ne force plus une largeur/hauteur.
+         * L'image conserve donc son ratio original.
+         */
         .lightbox-content {
             position: relative;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        /*
+         * Correction principale du problème de photo tronquée.
+         * L'image s'adapte à l'écran sans être coupée.
+         */
+        .lightbox-img {
+            display: block;
             width: auto;
             height: auto;
             max-width: 90vw;
-            max-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox-img {
-            display: block;
-            width: auto !important;
-            height: auto !important;
-            max-width: 88vw !important;
-            max-height: 84vh !important;
-            object-fit: contain !important;
+            max-height: 84vh;
+            object-fit: contain;
+            border-radius: 2px;
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.18);
         }
 
         .lightbox-close {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            color: #fff;
-            font-size: 42px;
-            font-weight: 200;
-            cursor: pointer;
+            position: absolute;
+            top: -45px;
+            right: 0;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 34px;
             line-height: 1;
-            z-index: 10;
-            transition: transform 0.3s ease;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+            z-index: 1002;
         }
 
         .lightbox-close:hover {
-            transform: rotate(90deg);
+            color: #000;
+            transform: scale(1.08);
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: -38px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #333;
+            font-size: 13px;
+            letter-spacing: 1px;
+            z-index: 1002;
+            white-space: nowrap;
         }
 
         .lightbox-arrow {
             position: fixed;
             top: 50%;
             transform: translateY(-50%);
-            width: 55px;
-            height: 55px;
-            border: 1px solid rgba(255,255,255,0.4);
-            background: rgba(0,0,0,0.2);
-            color: #fff;
-            cursor: pointer;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             font-size: 24px;
-            z-index: 10;
-            transition: all 0.3s ease;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, color 0.3s, transform 0.3s;
+            z-index: 1002;
         }
 
         .lightbox-arrow:hover {
             background: #fff;
             color: #000;
+            transform: translateY(-50%) scale(1.05);
         }
 
         .lightbox-prev {
@@ -552,282 +422,116 @@
             right: 20px;
         }
 
-        .lightbox-counter {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255,255,255,0.75);
-            font-size: 12px;
-            letter-spacing: 2px;
-        }
-
-        /* =========================================================
-           CONTACT / INSTAGRAM
-        ========================================================= */
-
-        .contact-section {
-            background: #eeeae2;
-            text-align: center;
-            padding: 110px 25px;
-        }
-
-        .contact-section h2 {
-            font-size: clamp(35px, 5vw, 55px);
-            font-weight: 300;
-            color: #111;
-            margin-bottom: 20px;
-        }
-
-        .contact-section p {
-            max-width: 600px;
-            margin: 0 auto 35px;
-            color: #666;
-            line-height: 1.9;
-        }
-
-        .contact-button {
-            display: inline-block;
-            background: #111;
-            color: #fff;
-            padding: 16px 35px;
-            text-decoration: none;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-button:hover {
-            background: #333;
-            transform: translateY(-2px);
-        }
-
-        /* =========================================================
+        /* =========================
            FOOTER
-        ========================================================= */
+        ========================= */
 
         footer {
-            padding: 45px 25px;
-            text-align: center;
             background: #faf8f3;
+            padding: 60px 0;
+            text-align: center;
             border-top: 1px solid #e8e6e0;
         }
 
-        .footer-brand {
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: #111;
+        .footer-content {
+            margin-bottom: 30px;
+        }
+
+        .footer-content p {
+            color: #666;
+            font-size: 14px;
             margin-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .social-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #000;
         }
 
         .copyright {
             color: #999;
-            font-size: 11px;
+            font-size: 12px;
+            margin-top: 30px;
         }
 
-        /* =========================================================
-           ANIMATIONS
-        ========================================================= */
-
-        @keyframes heroAppear {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes galleryAppear {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* =========================================================
+        /* =========================
            TABLETTE
-        ========================================================= */
+        ========================= */
 
-        @media (max-width: 900px) {
+        @media (max-width: 768px) {
 
-            .nav-menu {
-                gap: 18px;
-            }
-
-            .featured-inner {
-                grid-template-columns: 1fr;
-            }
-
-            .featured-photo {
-                min-height: 450px;
-            }
-
-            .featured-text {
-                padding: 55px 40px;
-            }
-
-            .gallery {
-                columns: 2 240px;
-            }
-        }
-
-        /* =========================================================
-           MOBILE
-        ========================================================= */
-
-        @media (max-width: 600px) {
-
-            .header-inner {
-                padding: 10px 15px;
+            header {
+                padding: 18px 0;
             }
 
             nav {
-                gap: 10px;
-            }
-
-            .future-logo {
-                width: 40px;
-                height: 40px;
-                font-size: 7px;
-            }
-
-            .brand {
-                gap: 8px;
+                gap: 15px;
             }
 
             .logo {
-                font-size: 15px;
-                letter-spacing: 0.7px;
+                font-size: 17px;
             }
 
             .nav-menu {
-                gap: 8px;
-            }
-
-            .nav-menu li:first-child,
-            .nav-menu li:nth-child(2) {
-                display: none;
-            }
-
-            .nav-contact {
-                padding: 8px 13px;
-                font-size: 9px !important;
+                gap: 12px;
             }
 
             .hero {
-                min-height: 620px;
-            }
-
-            .hero-small {
-                font-size: 9px;
-                letter-spacing: 3px;
+                padding: 95px 0;
+                background-attachment: scroll;
             }
 
             .hero h1 {
-                font-size: 45px;
-                line-height: 1.05;
-            }
-
-            .hero-subtitle {
-                font-size: 15px;
-            }
-
-            .intro {
-                padding: 80px 20px 65px;
-            }
-
-            .intro p {
-                font-size: 15px;
+                font-size: 34px;
             }
 
             .gallery-section {
-                padding: 20px 15px 80px;
+                padding: 65px 0 80px;
+                scroll-margin-top: 100px;
             }
 
-            .gallery-heading {
-                margin-bottom: 35px;
-            }
-
-            .categories {
-                gap: 7px;
-                margin-bottom: 35px;
-            }
-
-            .category-btn {
-                padding: 9px 13px;
-                font-size: 9px;
-            }
-
-            .gallery {
-                columns: 2 150px;
-                column-gap: 8px;
+            .gallery-grid {
+                columns: 2 220px;
+                column-gap: 16px;
             }
 
             .gallery-item {
-                margin-bottom: 8px;
+                margin-bottom: 16px;
             }
 
-            .featured {
-                padding: 0 15px;
-                margin-bottom: 70px;
+            .categories {
+                padding: 30px 0;
             }
 
-            .featured-photo {
-                min-height: 350px;
+            .nav-menu a {
+                font-size: 11px;
             }
 
-            .featured-text {
-                padding: 45px 25px;
-            }
-
-            .featured-text h2 {
-                font-size: 38px;
-            }
-
-            .contact-section {
-                padding: 80px 20px;
+            .contact-btn {
+                padding: 9px 15px;
             }
 
             .lightbox {
-                padding: 20px;
+                padding: 25px 55px;
             }
 
             .lightbox-img {
-                max-width: 94vw !important;
-                max-height: 78vh !important;
-            }
-
-            .lightbox-close {
-                top: 12px;
-                right: 18px;
-                font-size: 35px;
-            }
-
-            .lightbox-arrow {
-                width: 42px;
-                height: 42px;
-                font-size: 18px;
+                max-width: 88vw;
+                max-height: 82vh;
             }
 
             .lightbox-prev {
@@ -839,23 +543,116 @@
             }
         }
 
-        @media (max-width: 380px) {
+        /* =========================
+           MOBILE
+        ========================= */
 
-            .logo {
-                font-size: 13px;
+        @media (max-width: 480px) {
+
+            .container {
+                padding: 0 14px;
             }
 
-            .future-logo {
-                width: 35px;
-                height: 35px;
+            .gallery-grid {
+                columns: 1;
+                column-gap: 0;
             }
 
-            .nav-contact {
-                padding: 7px 10px;
+            .gallery-item {
+                margin-bottom: 16px;
+            }
+
+            .gallery-title {
+                font-size: 30px;
+            }
+
+            .gallery-description {
+                margin-bottom: 38px;
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 80px 0;
             }
 
             .hero h1 {
-                font-size: 39px;
+                font-size: 28px;
+            }
+
+            nav {
+                gap: 8px;
+            }
+
+            .logo {
+                font-size: 14px;
+                letter-spacing: 0;
+            }
+
+            .nav-menu {
+                gap: 8px;
+            }
+
+            .nav-menu a {
+                font-size: 10px;
+            }
+
+            .contact-btn {
+                padding: 8px 11px;
+                font-size: 10px;
+            }
+
+            .categories .container {
+                display: flex !important;
+                justify-content: flex-start !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto;
+                gap: 24px !important;
+                padding-bottom: 8px;
+                scrollbar-width: none;
+            }
+
+            .categories .container::-webkit-scrollbar {
+                display: none;
+            }
+
+            .category-link {
+                flex: 0 0 auto;
+                font-size: 11px;
+            }
+
+            /* Lightbox mobile */
+            .lightbox {
+                padding: 20px 42px;
+            }
+
+            .lightbox-img {
+                max-width: 92vw;
+                max-height: 78vh;
+            }
+
+            .lightbox-close {
+                top: -42px;
+                right: -2px;
+                font-size: 30px;
+            }
+
+            .lightbox-counter {
+                bottom: -34px;
+                font-size: 11px;
+            }
+
+            .lightbox-arrow {
+                width: 38px;
+                height: 38px;
+                font-size: 19px;
+            }
+
+            .lightbox-prev {
+                left: 5px;
+            }
+
+            .lightbox-next {
+                right: 5px;
             }
         }
     </style>
@@ -863,594 +660,650 @@
 
 <body>
 
-    <!-- =========================================================
+    <!-- =========================
          HEADER
-    ========================================================= -->
+    ========================= -->
 
     <header>
-
-        <div class="header-inner">
-
+        <div class="container">
             <nav>
 
-                <a href="index.html" class="brand">
-
-                    <div class="future-logo">
-                        LOGO
-                    </div>
-
-                    <div class="logo">
-                        Romain photographie
-                    </div>
-
+                <!-- Logo cliquable : retour accueil -->
+                <a href="#accueil" class="logo-link">
+                    <div class="logo">Romain photographie</div>
                 </a>
 
                 <ul class="nav-menu">
-
                     <li>
-                        <a href="#accueil">
+                        <a href="#accueil" class="nav-link active">
                             Accueil
                         </a>
                     </li>
 
                     <li>
-                        <a href="#galeries">
+                        <a href="#galeries" class="nav-link">
                             Galeries
                         </a>
                     </li>
 
                     <li>
-                        <a href="contact.html" class="nav-contact">
+                        <a href="contact.html" class="contact-btn">
                             Contact
                         </a>
                     </li>
-
                 </ul>
 
             </nav>
-
         </div>
-
     </header>
 
 
-    <!-- =========================================================
+    <!-- =========================
          HERO
-    ========================================================= -->
+    ========================= -->
 
     <section class="hero" id="accueil">
+        <div class="container">
 
-        <img
-            class="hero-image"
-            src="images/mariage/FB_IMG_1788292460682.jpg"
-            alt="Photographie de mariage"
-        >
+            <h1>Photographe de Moments Précieux</h1>
 
-        <div class="hero-overlay"></div>
-
-        <div class="hero-content">
-
-            <div class="hero-small">
-                Photographe
-            </div>
-
-            <h1>
-                Romain photographie
-            </h1>
-
-            <p class="hero-subtitle">
-                Capturer vos moments, raconter vos histoires
-                et conserver vos souvenirs.
+            <p>
+                Capturer l'essence de vos instants les plus importants
             </p>
 
-            <a href="#galeries" class="hero-button">
-                Découvrir mes photos
+            <a href="#galeries" class="hero-btn">
+                Découvrir mes galeries
             </a>
 
         </div>
-
-        <div class="scroll-indicator">
-            Découvrir
-        </div>
-
     </section>
 
 
-    <!-- =========================================================
-         INTRODUCTION
-    ========================================================= -->
+    <!-- =========================
+         CATEGORIES
+    ========================= -->
 
-    <section class="intro">
+    <section class="categories" id="galeries">
 
-        <div class="section-label">
-            Mon approche
-        </div>
+        <div class="container category-container">
 
-        <h2>
-            Des images naturelles,<br>
-            des souvenirs qui restent.
-        </h2>
-
-        <p>
-            J'aime capturer les instants spontanés, les émotions
-            et les petits détails qui rendent chaque histoire unique.
-            Mariage, portrait, couple, famille ou simplement une envie
-            de garder une belle trace d'un moment important :
-            chaque séance est l'occasion de créer des images qui vous ressemblent.
-        </p>
-
-    </section>
-
-
-    <!-- =========================================================
-         MARIAGE MIS EN AVANT
-    ========================================================= -->
-
-    <section class="featured">
-
-        <div class="featured-inner">
-
-            <div class="featured-photo">
-
-                <img
-                    src="images/mariage/FB_IMG_1788292460682.jpg"
-                    alt="Photographie de mariage"
-                    loading="lazy"
-                >
-
-            </div>
-
-            <div class="featured-text">
-
-                <div class="section-label">
-                    Portfolio
-                </div>
-
-                <h2>
-                    Photographie<br>
-                    de mariage
-                </h2>
-
-                <p>
-                    Les regards, les sourires, les émotions et tous
-                    ces petits instants qui rendent une journée
-                    inoubliable.
-                </p>
-
-                <a href="#galeries" class="featured-link">
-                    Voir la galerie mariage →
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================================================
-         GALERIES
-    ========================================================= -->
-
-    <section class="gallery-section" id="galeries">
-
-        <div class="gallery-heading">
-
-            <div class="section-label">
-                Portfolio
-            </div>
-
-            <h2>
-                Mes galeries
-            </h2>
-
-            <p>
-                Quelques histoires et moments capturés en images.
-            </p>
-
-        </div>
-
-
-        <!-- CATÉGORIES -->
-
-        <div class="categories">
-
-            <button
-                class="category-btn active"
-                onclick="showGallery('mariage', this)"
-            >
+            <button class="category-link active" data-category="mariage">
                 Mariage
             </button>
 
-            <button
-                class="category-btn"
-                onclick="showGallery('portrait', this)"
-            >
+            <button class="category-link" data-category="portrait">
                 Portrait
             </button>
 
-            <button
-                class="category-btn"
-                onclick="showGallery('couple', this)"
-            >
+            <button class="category-link" data-category="couple">
                 Couple
             </button>
 
-            <button
-                class="category-btn"
-                onclick="showGallery('famille', this)"
-            >
+            <button class="category-link" data-category="famille">
                 Famille
             </button>
 
-            <button
-                class="category-btn"
-                onclick="showGallery('grossesse', this)"
-            >
+            <button class="category-link" data-category="grossesse">
                 Grossesse
             </button>
 
-            <button
-                class="category-btn"
-                onclick="showGallery('paysage', this)"
-            >
+            <button class="category-link" data-category="paysage">
                 Paysage
             </button>
 
-            <button
-                class="category-btn"
-                onclick="showGallery('nature', this)"
-            >
+            <button class="category-link" data-category="nature">
                 Nature
             </button>
 
         </div>
+    </section>
 
 
-        <!-- =====================================================
+    <!-- =========================
+         GALERIES
+    ========================= -->
+
+    <div class="container">
+
+        <!-- =====================
              MARIAGE
-        ====================================================== -->
+        ====================== -->
 
-        <div class="gallery active" id="gallery-mariage">
+        <section
+            class="gallery-section"
+            id="galerie-mariage"
+            data-category="mariage"
+        >
 
-            <div
-                class="gallery-item"
-                onclick="openLightbox('gallery-mariage', 0)"
-            >
-                <img
-                    src="images/mariage/FB_IMG_1788292460682.jpg"
-                    alt="Mariage"
-                    loading="lazy"
+            <h2 class="gallery-title">
+                Mariages
+            </h2>
+
+            <p class="gallery-description">
+                Des moments volés du plus beau jour de votre vie.
+                Discrétion, élégance et émotion à travers chaque cliché.
+            </p>
+
+            <div class="gallery-grid">
+
+                <div
+                    class="gallery-item"
+                    onclick="openLightbox(this)"
                 >
-            </div>
+                    <img
+                        src="images/mariage/FB_IMG_1788289733110.jpg"
+                        alt="Mariage 1"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
+                </div>
 
-            <div
-                class="gallery-item"
-                onclick="openLightbox('gallery-mariage', 1)"
-            >
-                <img
-                    src="images/mariage/FB_IMG_1788292480682.jpg"
-                    alt="Mariage"
-                    loading="lazy"
+                <div
+                    class="gallery-item"
+                    onclick="openLightbox(this)"
                 >
-            </div>
+                    <img
+                        src="images/mariage/FB_IMG_1788289760373.jpg"
+                        alt="Mariage 2"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
+                </div>
 
-            <div
-                class="gallery-item"
-                onclick="openLightbox('gallery-mariage', 2)"
-            >
-                <img
-                    src="images/mariage/FB_IMG_1788292490682.jpg"
-                    alt="Mariage"
-                    loading="lazy"
+                <div
+                    class="gallery-item"
+                    onclick="openLightbox(this)"
                 >
-            </div>
+                    <img
+                        src="images/mariage/FB_IMG_1788289837930.jpg"
+                        alt="Mariage 3"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
+                </div>
 
-            <div
-                class="gallery-item"
-                onclick="openLightbox('gallery-mariage', 3)"
-            >
-                <img
-                    src="images/mariage/FB_IMG_1788292500682.jpg"
-                    alt="Mariage"
-                    loading="lazy"
+                <div
+                    class="gallery-item"
+                    onclick="openLightbox(this)"
                 >
-            </div>
+                    <img
+                        src="images/mariage/FB_IMG_1788289857757.jpg"
+                        alt="Mariage 4"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
+                </div>
 
-            <div
-                class="gallery-item"
-                onclick="openLightbox('gallery-mariage', 4)"
-            >
-                <img
-                    src="images/mariage/FB_IMG_1788292510682.jpg"
-                    alt="Mariage"
-                    loading="lazy"
+                <div
+                    class="gallery-item"
+                    onclick="openLightbox(this)"
                 >
-            </div>
+                    <img
+                        src="images/mariage/FB_IMG_1788289872537.jpg"
+                        alt="Mariage 5"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
+                </div>
 
-            <div
-                class="gallery-item"
-                onclick="openLightbox('gallery-mariage', 5)"
-            >
-                <img
-                    src="images/mariage/FB_IMG_1788292520682.jpg"
-                    alt="Mariage"
-                    loading="lazy"
+                <div
+                    class="gallery-item"
+                    onclick="openLightbox(this)"
                 >
-            </div>
+                    <img
+                        src="images/mariage/FB_IMG_1788289952279.jpg"
+                        alt="Mariage 6"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
+                </div>
 
-            <div
-                class="gallery-item"
-                onclick="openLightbox('gallery-mariage', 6)"
-            >
-                <img
-                    src="images/mariage/FB_IMG_1788292530682.jpg"
-                    alt="Mariage"
-                    loading="lazy"
+                <div
+                    class="gallery-item"
+                    onclick="openLightbox(this)"
                 >
+                    <img
+                        src="images/mariage/FB_IMG_1788289963148.jpg"
+                        alt="Mariage 7"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
+                </div>
+
             </div>
+        </section>
 
-        </div>
 
-
-        <!-- =====================================================
+        <!-- =====================
              PORTRAIT
-        ====================================================== -->
+        ====================== -->
 
-        <div class="gallery" id="gallery-portrait">
+        <section
+            class="gallery-section"
+            id="galerie-portrait"
+            data-category="portrait"
+            style="display: none;"
+        >
 
-            <div class="gallery-item" onclick="openLightbox('gallery-portrait', 0)">
-                <img
-                    src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1200&q=85"
-                    alt="Portrait"
-                    loading="lazy"
-                >
+            <h2 class="gallery-title">
+                Portraits
+            </h2>
+
+            <p class="gallery-description">
+                Révéler votre essence à travers des portraits authentiques
+                et lumineux en lumière naturelle.
+            </p>
+
+            <div class="gallery-grid">
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=800&fit=crop" alt="Portrait 1">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?w=600&h=600&fit=crop" alt="Portrait 2">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1470886185043-a9bcde4e98df?w=800&h=600&fit=crop" alt="Portrait 3">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop" alt="Portrait 4">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop" alt="Portrait 5">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=600&fit=crop" alt="Portrait 6">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1520763185298-1b434c919abe?w=600&h=800&fit=crop" alt="Portrait 7">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a08e8db338?w=800&h=600&fit=crop" alt="Portrait 8">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1519761881033-1fcd3a36ef34?w=600&h=600&fit=crop" alt="Portrait 9">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('gallery-portrait', 1)">
-                <img
-                    src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=85"
-                    alt="Portrait"
-                    loading="lazy"
-                >
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('gallery-portrait', 2)">
-                <img
-                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=85"
-                    alt="Portrait"
-                    loading="lazy"
-                >
-            </div>
-
-        </div>
+        </section>
 
 
-        <!-- =====================================================
+        <!-- =====================
              COUPLE
-        ====================================================== -->
+        ====================== -->
 
-        <div class="gallery" id="gallery-couple">
+        <section
+            class="gallery-section"
+            id="galerie-couple"
+            data-category="couple"
+            style="display: none;"
+        >
 
-            <div class="gallery-item" onclick="openLightbox('gallery-couple', 0)">
-                <img
-                    src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=85"
-                    alt="Couple"
-                    loading="lazy"
-                >
+            <h2 class="gallery-title">
+                Couples
+            </h2>
+
+            <p class="gallery-description">
+                Immortaliser l'amour et la tendresse entre deux êtres.
+                Des séances empreintes de complicité et d'émotion.
+            </p>
+
+            <div class="gallery-grid">
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1522102073099-fc3ee2dc1d3d?w=600&h=800&fit=crop" alt="Couple 1">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1516019266335-30265b3d4e65?w=600&h=600&fit=crop" alt="Couple 2">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&h=600&fit=crop" alt="Couple 3">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1552821206-e0b85cc2aadb?w=600&h=800&fit=crop" alt="Couple 4">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop" alt="Couple 5">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1489749798305-4fea3ba63d60?w=600&h=600&fit=crop" alt="Couple 6">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1522853556640-164d72e9e35e?w=600&h=800&fit=crop" alt="Couple 7">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=600&fit=crop" alt="Couple 8">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1537633552985-caf6b328d89f?w=600&h=600&fit=crop" alt="Couple 9">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('gallery-couple', 1)">
-                <img
-                    src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1200&q=85"
-                    alt="Couple"
-                    loading="lazy"
-                >
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('gallery-couple', 2)">
-                <img
-                    src="https://images.unsplash.com/photo-1520857014576-2c4f4c972b57?auto=format&fit=crop&w=1200&q=85"
-                    alt="Couple"
-                    loading="lazy"
-                >
-            </div>
-
-        </div>
+        </section>
 
 
-        <!-- =====================================================
+        <!-- =====================
              FAMILLE
-        ====================================================== -->
+        ====================== -->
 
-        <div class="gallery" id="gallery-famille">
+        <section
+            class="gallery-section"
+            id="galerie-famille"
+            data-category="famille"
+            style="display: none;"
+        >
 
-            <div class="gallery-item" onclick="openLightbox('gallery-famille', 0)">
-                <img
-                    src="https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=1200&q=85"
-                    alt="Famille"
-                    loading="lazy"
-                >
+            <h2 class="gallery-title">
+                Familles
+            </h2>
+
+            <p class="gallery-description">
+                Capturer les sourires, les rires et les liens qui unissent
+                votre famille dans leurs plus beaux moments.
+            </p>
+
+            <div class="gallery-grid">
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=800&fit=crop" alt="Famille 1">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=800&h=600&fit=crop" alt="Famille 2">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1513325369-16695b6ba4d2?w=600&h=600&fit=crop" alt="Famille 3">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1475536221683-0d5656e9d504?w=600&h=800&fit=crop" alt="Famille 4">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1515995471585-351684cd2e8f?w=800&h=600&fit=crop" alt="Famille 5">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1503454537688-e6ba5f287842?w=600&h=600&fit=crop" alt="Famille 6">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1507656961167-fc0cad96a560?w=600&h=800&fit=crop" alt="Famille 7">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1493103671537-7e0e40907d23?w=800&h=600&fit=crop" alt="Famille 8">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f70504504?w=600&h=600&fit=crop" alt="Famille 9">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('gallery-famille', 1)">
-                <img
-                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=85"
-                    alt="Famille"
-                    loading="lazy"
-                >
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('gallery-famille', 2)">
-                <img
-                    src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=85"
-                    alt="Famille"
-                    loading="lazy"
-                >
-            </div>
-
-        </div>
+        </section>
 
 
-        <!-- =====================================================
+        <!-- =====================
              GROSSESSE
-        ====================================================== -->
+        ====================== -->
 
-        <div class="gallery" id="gallery-grossesse">
+        <section
+            class="gallery-section"
+            id="galerie-grossesse"
+            data-category="grossesse"
+            style="display: none;"
+        >
 
-            <div class="gallery-item" onclick="openLightbox('gallery-grossesse', 0)">
-                <img
-                    src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=1200&q=85"
-                    alt="Grossesse"
-                    loading="lazy"
-                >
+            <h2 class="gallery-title">
+                Grossesses
+            </h2>
+
+            <p class="gallery-description">
+                Célébrer la beauté de l'attente.
+                Des séances douces et tendres pour immortaliser ce moment magique.
+            </p>
+
+            <div class="gallery-grid">
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1475253990210-e1da6d5bcd63?w=600&h=800&fit=crop" alt="Grossesse 1">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&h=600&fit=crop" alt="Grossesse 2">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=600&fit=crop" alt="Grossesse 3">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop" alt="Grossesse 4">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&h=600&fit=crop" alt="Grossesse 5">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=600&fit=crop" alt="Grossesse 6">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1493103671537-7e0e40907d23?w=600&h=800&fit=crop" alt="Grossesse 7">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f70504504?w=800&h=600&fit=crop" alt="Grossesse 8">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=600&fit=crop" alt="Grossesse 9">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('gallery-grossesse', 1)">
-                <img
-                    src="https://images.unsplash.com/photo-1491013516836-7db643ee125a?auto=format&fit=crop&w=1200&q=85"
-                    alt="Grossesse"
-                    loading="lazy"
-                >
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('gallery-grossesse', 2)">
-                <img
-                    src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=85"
-                    alt="Grossesse"
-                    loading="lazy"
-                >
-            </div>
-
-        </div>
+        </section>
 
 
-        <!-- =====================================================
+        <!-- =====================
              PAYSAGE
-        ====================================================== -->
+        ====================== -->
 
-        <div class="gallery" id="gallery-paysage">
+        <section
+            class="gallery-section"
+            id="galerie-paysage"
+            data-category="paysage"
+            style="display: none;"
+        >
 
-            <div class="gallery-item" onclick="openLightbox('gallery-paysage', 0)">
-                <img
-                    src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=85"
-                    alt="Paysage"
-                    loading="lazy"
-                >
+            <h2 class="gallery-title">
+                Paysages
+            </h2>
+
+            <p class="gallery-description">
+                Les plus beaux décors naturels capturés pour sublimer vos souvenirs.
+                Lumière dorée et horizons enchanteurs.
+            </p>
+
+            <div class="gallery-grid">
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=800&fit=crop" alt="Paysage 1">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1469022563149-aa64dbd37dae?w=800&h=600&fit=crop" alt="Paysage 2">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=600&fit=crop" alt="Paysage 3">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=600&h=800&fit=crop" alt="Paysage 4">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" alt="Paysage 5">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=600&h=600&fit=crop" alt="Paysage 6">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=800&fit=crop" alt="Paysage 7">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1485229607352-3a38e1ff0784?w=800&h=600&fit=crop" alt="Paysage 8">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=600&fit=crop" alt="Paysage 9">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('gallery-paysage', 1)">
-                <img
-                    src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1400&q=85"
-                    alt="Paysage"
-                    loading="lazy"
-                >
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('gallery-paysage', 2)">
-                <img
-                    src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=85"
-                    alt="Paysage"
-                    loading="lazy"
-                >
-            </div>
-
-        </div>
+        </section>
 
 
-        <!-- =====================================================
+        <!-- =====================
              NATURE
-        ====================================================== -->
+        ====================== -->
 
-        <div class="gallery" id="gallery-nature">
+        <section
+            class="gallery-section"
+            id="galerie-nature"
+            data-category="nature"
+            style="display: none;"
+        >
 
-            <div class="gallery-item" onclick="openLightbox('gallery-nature', 0)">
-                <img
-                    src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1400&q=85"
-                    alt="Nature"
-                    loading="lazy"
-                >
+            <h2 class="gallery-title">
+                Nature
+            </h2>
+
+            <p class="gallery-description">
+                La beauté sauvage et authentique de la nature.
+                Détails époustouflants et couleurs vivantes.
+            </p>
+
+            <div class="gallery-grid">
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=600&fit=crop" alt="Nature 1">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600&h=600&fit=crop" alt="Nature 2">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=600&fit=crop" alt="Nature 3">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1470114716159-e389f8712fda?w=600&h=600&fit=crop" alt="Nature 4">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=600&fit=crop" alt="Nature 5">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600&h=600&fit=crop" alt="Nature 6">
+                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                </div>
+
             </div>
+        </section>
 
-            <div class="gallery-item" onclick="openLightbox('gallery-nature', 1)">
-                <img
-                    src="https://images.unsplash.com/photo-1473445361085-b9a07f55608b?auto=format&fit=crop&w=1400&q=85"
-                    alt="Nature"
-                    loading="lazy"
-                >
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('gallery-nature', 2)">
-                <img
-                    src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1400&q=85"
-                    alt="Nature"
-                    loading="lazy"
-                >
-            </div>
-
-        </div>
-
-    </section>
+    </div>
 
 
-    <!-- =========================================================
-         CONTACT
-    ========================================================= -->
-
-    <section class="contact-section">
-
-        <div class="section-label">
-            Une envie ?
-        </div>
-
-        <h2>
-            Parlons de votre projet.
-        </h2>
-
-        <p>
-            Une séance, un mariage, un portrait ou simplement
-            l'envie de créer de belles images ?
-            Retrouvez-moi sur Instagram.
-        </p>
-
-        <a href="contact.html" class="contact-button">
-            Me contacter
-        </a>
-
-    </section>
-
-
-    <!-- =========================================================
-         FOOTER
-    ========================================================= -->
-
-    <footer>
-
-        <div class="footer-brand">
-            Romain photographie
-        </div>
-
-        <div class="copyright">
-            © 2026 Romain photographie. Tous droits réservés.
-        </div>
-
-    </footer>
-
-
-    <!-- =========================================================
+    <!-- =========================
          LIGHTBOX
-    ========================================================= -->
+    ========================= -->
 
-    <div
-        class="lightbox"
-        id="lightbox"
-        onclick="backgroundClose(event)"
-    >
+    <div class="lightbox" id="lightbox">
 
         <button
             class="lightbox-arrow lightbox-prev"
-            onclick="prevLightboxImage(event)"
-            aria-label="Photo précédente"
+            onclick="prevLightboxImage()"
+            aria-label="Image précédente"
         >
             &#10094;
         </button>
@@ -1459,7 +1312,7 @@
 
             <span
                 class="lightbox-close"
-                onclick="closeLightbox(event)"
+                onclick="closeLightbox()"
                 aria-label="Fermer"
             >
                 &times;
@@ -1472,292 +1325,363 @@
                 alt=""
             >
 
+            <span
+                class="lightbox-counter"
+                id="lightbox-counter"
+            ></span>
+
         </div>
 
         <button
             class="lightbox-arrow lightbox-next"
-            onclick="nextLightboxImage(event)"
-            aria-label="Photo suivante"
+            onclick="nextLightboxImage()"
+            aria-label="Image suivante"
         >
             &#10095;
         </button>
 
-        <div
-            class="lightbox-counter"
-            id="lightbox-counter"
-        >
-        </div>
-
     </div>
 
 
-    <!-- =========================================================
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer id="contact">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <p>
+                    Vous aimez ce que vous voyez ?
+                </p>
+
+                <p
+                    style="
+                        font-size: 16px;
+                        color: #333;
+                        font-weight: 600;
+                    "
+                >
+                    Écrivez-moi pour réserver votre séance
+                </p>
+
+            </div>
+
+            <div class="social-links">
+
+                <a
+                    href="https://www.instagram.com/direct/t/empreinteimpression"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    📸 Message Instagram
+                </a>
+
+            </div>
+
+            <div class="copyright">
+                © 2026 Romain photographie. Tous droits réservés.
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
          JAVASCRIPT
-    ========================================================= -->
+    ========================= -->
 
     <script>
 
-        /* =========================================================
-           CHANGEMENT DE GALERIE
-        ========================================================= */
+        /* =========================
+           CATEGORY SWITCHING
+        ========================= */
 
-        function showGallery(category, button) {
+        document.querySelectorAll('.category-link').forEach(link => {
 
-            const galleries = document.querySelectorAll('.gallery');
-            const buttons = document.querySelectorAll('.category-btn');
+            link.addEventListener('click', function () {
 
-            galleries.forEach(function(gallery) {
-                gallery.classList.remove('active');
+                const category = this.dataset.category;
+
+                /* Cacher toutes les galeries */
+                document.querySelectorAll('[id^="galerie-"]').forEach(section => {
+                    section.style.display = 'none';
+                });
+
+                /* Retirer active */
+                document.querySelectorAll('.category-link').forEach(l => {
+                    l.classList.remove('active');
+                });
+
+                /* Afficher la galerie sélectionnée */
+                const selectedGallery =
+                    document.getElementById('galerie-' + category);
+
+                if (selectedGallery) {
+
+                    selectedGallery.style.display = 'block';
+
+                    this.classList.add('active');
+
+                    /* Petit délai pour laisser le navigateur afficher la section */
+                    setTimeout(() => {
+
+                        selectedGallery.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+
+                    }, 50);
+                }
+
             });
 
-            buttons.forEach(function(btn) {
-                btn.classList.remove('active');
-            });
-
-            const selectedGallery =
-                document.getElementById('gallery-' + category);
-
-            if (selectedGallery) {
-                selectedGallery.classList.add('active');
-            }
-
-            if (button) {
-                button.classList.add('active');
-            }
-        }
+        });
 
 
-        /* =========================================================
+        /* =========================
            LIGHTBOX
-        ========================================================= */
+        ========================= */
 
-        let currentGallery = null;
-        let currentIndex = 0;
-
-
-        function openLightbox(galleryId, index) {
-
-            const gallery = document.getElementById(galleryId);
-
-            if (!gallery) return;
-
-            const images = gallery.querySelectorAll('img');
-
-            if (!images.length) return;
-
-            currentGallery = galleryId;
-            currentIndex = index;
-
-            showLightboxImage();
-
-            document.getElementById('lightbox')
-                .classList.add('open');
-
-            document.body.style.overflow = 'hidden';
-        }
+        let currentGalleryImages = [];
+        let currentImageIndex = 0;
 
 
-        function showLightboxImage() {
+        function openLightbox(el) {
 
-            if (!currentGallery) return;
+            /* Galerie correspondant à l'image cliquée */
+            const gallery = el.closest('.gallery-grid');
 
-            const gallery =
-                document.getElementById(currentGallery);
-
-            const images =
-                gallery.querySelectorAll('img');
-
-            if (!images.length) return;
-
-            const image =
-                images[currentIndex];
-
-            const lightboxImg =
-                document.getElementById('lightbox-img');
-
-            lightboxImg.src = image.src;
-            lightboxImg.alt = image.alt;
-
-            document.getElementById('lightbox-counter').textContent =
-                (currentIndex + 1) + ' / ' + images.length;
-        }
-
-
-        function nextLightboxImage(event) {
-
-            if (event) {
-                event.stopPropagation();
+            if (!gallery) {
+                return;
             }
 
-            if (!currentGallery) return;
+            /* Récupérer toutes les images de cette galerie */
+            const items =
+                Array.from(
+                    gallery.querySelectorAll('.gallery-item')
+                );
 
-            const gallery =
-                document.getElementById(currentGallery);
+            currentGalleryImages =
+                items.map(item => {
 
-            const images =
-                gallery.querySelectorAll('img');
+                    const image = item.querySelector('img');
 
-            if (!images.length) return;
+                    return image ? image.src : '';
 
-            currentIndex =
-                (currentIndex + 1) % images.length;
-
-            showLightboxImage();
-        }
+                }).filter(src => src !== '');
 
 
-        function prevLightboxImage(event) {
+            currentImageIndex = items.indexOf(el);
 
-            if (event) {
-                event.stopPropagation();
+            if (currentImageIndex === -1) {
+                currentImageIndex = 0;
             }
 
-            if (!currentGallery) return;
-
-            const gallery =
-                document.getElementById(currentGallery);
-
-            const images =
-                gallery.querySelectorAll('img');
-
-            if (!images.length) return;
-
-            currentIndex =
-                (currentIndex - 1 + images.length) % images.length;
-
-            showLightboxImage();
-        }
-
-
-        function closeLightbox(event) {
-
-            if (event) {
-                event.stopPropagation();
-            }
-
-            document.getElementById('lightbox')
-                .classList.remove('open');
-
-            document.body.style.overflow = '';
-
-            currentGallery = null;
-        }
-
-
-        function backgroundClose(event) {
-
-            if (event.target.id === 'lightbox') {
-                closeLightbox();
-            }
-        }
-
-
-        /* =========================================================
-           CLAVIER
-        ========================================================= */
-
-        document.addEventListener('keydown', function(event) {
 
             const lightbox =
                 document.getElementById('lightbox');
 
-            if (!lightbox.classList.contains('open')) {
-                return;
-            }
 
-            if (event.key === 'Escape') {
-                closeLightbox();
-            }
-
-            if (event.key === 'ArrowRight') {
-                nextLightboxImage();
-            }
-
-            if (event.key === 'ArrowLeft') {
-                prevLightboxImage();
-            }
-
-        });
+            showLightboxImage(currentImageIndex);
 
 
-        /* =========================================================
-           SWIPE MOBILE
-        ========================================================= */
+            lightbox.classList.add('active');
 
-        let touchStartX = 0;
-        let touchEndX = 0;
+            document.body.style.overflow = 'hidden';
 
-        const lightbox =
-            document.getElementById('lightbox');
-
-
-        lightbox.addEventListener('touchstart', function(event) {
-
-            touchStartX =
-                event.changedTouches[0].screenX;
-
-        }, { passive: true });
-
-
-        lightbox.addEventListener('touchend', function(event) {
-
-            touchEndX =
-                event.changedTouches[0].screenX;
-
-            handleSwipe();
-
-        }, { passive: true });
-
-
-        function handleSwipe() {
-
-            const distance =
-                touchEndX - touchStartX;
-
-            if (Math.abs(distance) < 50) {
-                return;
-            }
-
-            if (distance < 0) {
-                nextLightboxImage();
-            } else {
-                prevLightboxImage();
-            }
         }
 
 
-        /* =========================================================
-           NAVIGATION FLUIDE
-        ========================================================= */
+        function showLightboxImage(index) {
 
-        document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+            if (
+                currentGalleryImages.length === 0 ||
+                !currentGalleryImages[index]
+            ) {
+                return;
+            }
 
-            link.addEventListener('click', function(event) {
+            const imgSrc =
+                currentGalleryImages[index];
 
-                const targetId =
-                    this.getAttribute('href');
+            const lightbox =
+                document.getElementById('lightbox');
 
-                if (!targetId || targetId === '#') {
-                    return;
-                }
+            const lightboxImg =
+                document.getElementById('lightbox-img');
 
-                const target =
-                    document.querySelector(targetId);
 
-                if (target) {
+            /*
+             * Image principale :
+             * elle garde ses proportions originales.
+             */
+            lightboxImg.src = imgSrc;
 
-                    event.preventDefault();
 
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+            /*
+             * Image floutée en arrière-plan.
+             */
+            lightbox.style.backgroundImage =
+                `url("${imgSrc}")`;
 
+            lightbox.style.backgroundSize = 'cover';
+
+            lightbox.style.backgroundPosition = 'center';
+
+
+            /*
+             * Compteur
+             */
+            document.getElementById('lightbox-counter').textContent =
+                (index + 1) +
+                ' / ' +
+                currentGalleryImages.length;
+
+        }
+
+
+        function prevLightboxImage() {
+
+            if (currentGalleryImages.length === 0) {
+                return;
+            }
+
+            currentImageIndex =
+                (
+                    currentImageIndex -
+                    1 +
+                    currentGalleryImages.length
+                ) %
+                currentGalleryImages.length;
+
+
+            showLightboxImage(currentImageIndex);
+
+        }
+
+
+        function nextLightboxImage() {
+
+            if (currentGalleryImages.length === 0) {
+                return;
+            }
+
+            currentImageIndex =
+                (
+                    currentImageIndex +
+                    1
+                ) %
+                currentGalleryImages.length;
+
+
+            showLightboxImage(currentImageIndex);
+
+        }
+
+
+        function closeLightbox() {
+
+            const lightbox =
+                document.getElementById('lightbox');
+
+
+            lightbox.classList.remove('active');
+
+
+            /*
+             * On enlève l'image de fond
+             * quand la lightbox est fermée.
+             */
+            lightbox.style.backgroundImage = 'none';
+
+
+            document.body.style.overflow = '';
+
+        }
+
+
+        /* =========================
+           FERMER EN CLIQUANT EN DEHORS
+        ========================= */
+
+        document
+            .getElementById('lightbox')
+            .addEventListener('click', function (e) {
+
+                if (e.target === this) {
+                    closeLightbox();
                 }
 
             });
 
+
+        /* =========================
+           CLAVIER
+        ========================= */
+
+        document.addEventListener('keydown', function (e) {
+
+            const lightbox =
+                document.getElementById('lightbox');
+
+
+            if (!lightbox.classList.contains('active')) {
+                return;
+            }
+
+
+            if (e.key === 'Escape') {
+
+                closeLightbox();
+
+            } else if (e.key === 'ArrowLeft') {
+
+                prevLightboxImage();
+
+            } else if (e.key === 'ArrowRight') {
+
+                nextLightboxImage();
+
+            }
+
         });
+
+
+        /* =========================
+           NAVIGATION ACCUEIL / GALERIES
+        ========================= */
+
+        document
+            .querySelectorAll('a[href^="#"]')
+            .forEach(link => {
+
+                link.addEventListener('click', function (e) {
+
+                    const targetId =
+                        this.getAttribute('href');
+
+                    const target =
+                        document.querySelector(targetId);
+
+
+                    if (target) {
+
+                        e.preventDefault();
+
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+
+                    }
+
+                });
+
+            });
 
     </script>
 
