@@ -314,7 +314,6 @@
             display: flex;
         }
 
-        /* Fond sombre + flou */
         .lightbox.active::before {
             content: '';
             position: absolute;
@@ -325,11 +324,6 @@
             z-index: 999;
         }
 
-        /*
-         * IMPORTANT :
-         * Le conteneur ne force plus une largeur/hauteur.
-         * L'image conserve donc son ratio original.
-         */
         .lightbox-content {
             position: relative;
             z-index: 1001;
@@ -340,10 +334,6 @@
             max-height: 90vh;
         }
 
-        /*
-         * Correction principale du problème de photo tronquée.
-         * L'image s'adapte à l'écran sans être coupée.
-         */
         .lightbox-img {
             display: block;
             width: auto;
@@ -620,7 +610,6 @@
                 font-size: 11px;
             }
 
-            /* Lightbox mobile */
             .lightbox {
                 padding: 20px 42px;
             }
@@ -669,7 +658,7 @@
             <nav>
 
                 <!-- Logo cliquable : retour accueil -->
-                <a href="#accueil" class="logo-link">
+                <a href="index.html" class="logo-link">
                     <div class="logo">Romain photographie</div>
                 </a>
 
@@ -786,10 +775,7 @@
 
             <div class="gallery-grid">
 
-                <div
-                    class="gallery-item"
-                    onclick="openLightbox(this)"
-                >
+                <div class="gallery-item" onclick="openLightbox(this)">
                     <img
                         src="images/mariage/FB_IMG_1788289733110.jpg"
                         alt="Mariage 1"
@@ -799,10 +785,7 @@
                     </div>
                 </div>
 
-                <div
-                    class="gallery-item"
-                    onclick="openLightbox(this)"
-                >
+                <div class="gallery-item" onclick="openLightbox(this)">
                     <img
                         src="images/mariage/FB_IMG_1788289760373.jpg"
                         alt="Mariage 2"
@@ -812,10 +795,7 @@
                     </div>
                 </div>
 
-                <div
-                    class="gallery-item"
-                    onclick="openLightbox(this)"
-                >
+                <div class="gallery-item" onclick="openLightbox(this)">
                     <img
                         src="images/mariage/FB_IMG_1788289837930.jpg"
                         alt="Mariage 3"
@@ -825,10 +805,7 @@
                     </div>
                 </div>
 
-                <div
-                    class="gallery-item"
-                    onclick="openLightbox(this)"
-                >
+                <div class="gallery-item" onclick="openLightbox(this)">
                     <img
                         src="images/mariage/FB_IMG_1788289857757.jpg"
                         alt="Mariage 4"
@@ -838,10 +815,7 @@
                     </div>
                 </div>
 
-                <div
-                    class="gallery-item"
-                    onclick="openLightbox(this)"
-                >
+                <div class="gallery-item" onclick="openLightbox(this)">
                     <img
                         src="images/mariage/FB_IMG_1788289872537.jpg"
                         alt="Mariage 5"
@@ -851,10 +825,7 @@
                     </div>
                 </div>
 
-                <div
-                    class="gallery-item"
-                    onclick="openLightbox(this)"
-                >
+                <div class="gallery-item" onclick="openLightbox(this)">
                     <img
                         src="images/mariage/FB_IMG_1788289952279.jpg"
                         alt="Mariage 6"
@@ -864,10 +835,7 @@
                     </div>
                 </div>
 
-                <div
-                    class="gallery-item"
-                    onclick="openLightbox(this)"
-                >
+                <div class="gallery-item" onclick="openLightbox(this)">
                     <img
                         src="images/mariage/FB_IMG_1788289963148.jpg"
                         alt="Mariage 7"
@@ -1406,17 +1374,14 @@
 
                 const category = this.dataset.category;
 
-                /* Cacher toutes les galeries */
                 document.querySelectorAll('[id^="galerie-"]').forEach(section => {
                     section.style.display = 'none';
                 });
 
-                /* Retirer active */
                 document.querySelectorAll('.category-link').forEach(l => {
                     l.classList.remove('active');
                 });
 
-                /* Afficher la galerie sélectionnée */
                 const selectedGallery =
                     document.getElementById('galerie-' + category);
 
@@ -1426,7 +1391,6 @@
 
                     this.classList.add('active');
 
-                    /* Petit délai pour laisser le navigateur afficher la section */
                     setTimeout(() => {
 
                         selectedGallery.scrollIntoView({
@@ -1452,14 +1416,12 @@
 
         function openLightbox(el) {
 
-            /* Galerie correspondant à l'image cliquée */
             const gallery = el.closest('.gallery-grid');
 
             if (!gallery) {
                 return;
             }
 
-            /* Récupérer toutes les images de cette galerie */
             const items =
                 Array.from(
                     gallery.querySelectorAll('.gallery-item')
@@ -1515,16 +1477,9 @@
                 document.getElementById('lightbox-img');
 
 
-            /*
-             * Image principale :
-             * elle garde ses proportions originales.
-             */
             lightboxImg.src = imgSrc;
 
 
-            /*
-             * Image floutée en arrière-plan.
-             */
             lightbox.style.backgroundImage =
                 `url("${imgSrc}")`;
 
@@ -1533,9 +1488,6 @@
             lightbox.style.backgroundPosition = 'center';
 
 
-            /*
-             * Compteur
-             */
             document.getElementById('lightbox-counter').textContent =
                 (index + 1) +
                 ' / ' +
@@ -1592,10 +1544,6 @@
             lightbox.classList.remove('active');
 
 
-            /*
-             * On enlève l'image de fond
-             * quand la lightbox est fermée.
-             */
             lightbox.style.backgroundImage = 'none';
 
 
