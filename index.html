@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Romain photographie - Photographe</title>
 
+    <meta
+        name="description"
+        content="Romain photographie - Photographe. Mariage, portrait, couple, famille, grossesse, paysage et nature."
+    >
+
     <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
         * {
             margin: 0;
             padding: 0;
@@ -17,266 +28,468 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family:
+                "Segoe UI",
+                Tahoma,
+                Geneva,
+                Verdana,
+                sans-serif;
+
             line-height: 1.6;
             color: #333;
             background: #faf8f3;
         }
 
-        /* =========================
-           HEADER & NAVIGATION
-        ========================= */
+        body.lightbox-open {
+            overflow: hidden;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        /* =====================================================
+           CONTENEUR
+        ===================================================== */
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
         header {
-            background: #faf8f3;
-            padding: 30px 0;
-            border-bottom: 1px solid #e8e6e0;
             position: sticky;
             top: 0;
             z-index: 100;
-        }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 20px;
+            background: rgba(250, 248, 243, 0.96);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            border-bottom: 1px solid #e8e6e0;
         }
 
         nav {
+            min-height: 82px;
+
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
         }
+
+
+        /* =====================================================
+           LOGO + NOM
+        ===================================================== */
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 14px;
+
+            text-decoration: none;
+            color: inherit;
+
+            flex-shrink: 0;
+        }
+
+
+        /* Emplacement prévu pour ton futur logo */
+
+        .future-logo {
+            width: 58px;
+            height: 58px;
+
+            border: 1px dashed #aaa;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #fff;
+
+            color: #999;
+
+            font-size: 9px;
+            font-weight: 600;
+
+            letter-spacing: 1px;
+
+            transition:
+                border-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .brand:hover .future-logo {
+            border-color: #555;
+            color: #555;
+
+            transform: scale(1.03);
+        }
+
 
         .logo {
             font-size: 24px;
             font-weight: 700;
+
             color: #000;
+
             letter-spacing: 1px;
+            white-space: nowrap;
         }
 
-        .logo-link {
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer;
-        }
+
+        /* =====================================================
+           MENU
+        ===================================================== */
 
         .nav-menu {
             display: flex;
-            gap: 40px;
-            list-style: none;
             align-items: center;
+
+            gap: 34px;
+
+            list-style: none;
         }
 
         .nav-menu a {
             text-decoration: none;
             color: #333;
+
+            font-size: 13px;
             font-weight: 500;
-            font-size: 14px;
+
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: color 0.3s;
+            letter-spacing: 0.8px;
+
+            transition:
+                color 0.3s ease,
+                opacity 0.3s ease;
         }
 
         .nav-menu a:hover {
-            color: #999;
+            color: #000;
         }
 
         .nav-menu a.active {
             color: #000;
+
             border-bottom: 2px solid #000;
+
             padding-bottom: 5px;
         }
 
+
+        /* Bouton contact */
+
         .contact-btn {
-            background: transparent;
-            color: #333;
-            padding: 12px 30px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 13px;
-            transition: color 0.3s, border 0.3s, background 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 11px 25px;
+
             border: 1px solid #333;
-            cursor: pointer;
+            border-radius: 4px;
+
+            color: #333 !important;
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease;
         }
 
         .contact-btn:hover {
-            background: #f0f0f0;
-            color: #000;
+            background: #333;
+            color: #fff !important;
         }
 
-        /* =========================
+
+        /* =====================================================
            HERO
-        ========================= */
+        ===================================================== */
 
         .hero {
-            padding: 120px 0;
+            min-height: 620px;
+
+            display: flex;
+            align-items: center;
+
             text-align: center;
-            background:
-                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                url('images/mariage/FB_IMG_1788292460682.jpg') center/cover;
-            background-attachment: fixed;
+
+            padding: 100px 0;
+
             color: #fff;
-            position: relative;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.42),
+                    rgba(0, 0, 0, 0.42)
+                ),
+                url("images/mariage/FB_IMG_1788292460682.jpg")
+                center / cover no-repeat;
+
+            background-attachment: fixed;
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: #fff;
+            max-width: 850px;
+
+            margin: 0 auto 20px;
+
+            font-size: clamp(34px, 5vw, 54px);
+
+            line-height: 1.15;
+
             font-weight: 300;
+
             letter-spacing: 2px;
         }
 
         .hero p {
+            max-width: 650px;
+
+            margin: 0 auto 40px;
+
             font-size: 18px;
+
             color: #f0f0f0;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+
             font-style: italic;
         }
 
         .hero-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 50px;
+
+            padding: 14px 38px;
+
             background: #000;
             color: #fff;
-            padding: 15px 45px;
+
             text-decoration: none;
+
             border-radius: 4px;
+
             font-weight: 600;
-            transition: background 0.3s;
+
+            transition:
+                background 0.3s ease,
+                transform 0.3s ease;
         }
 
         .hero-btn:hover {
             background: #333;
+
+            transform: translateY(-2px);
         }
 
-        /* =========================
+
+        /* =====================================================
            CATEGORIES
-        ========================= */
+        ===================================================== */
 
         .categories {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 42px 0;
-            flex-wrap: wrap;
+            position: sticky;
+            top: 82px;
+            z-index: 90;
+
+            padding: 30px 0;
+
             border-bottom: 1px solid #e8e6e0;
-            background: rgba(250, 248, 243, 0.92);
+
+            background: rgba(250, 248, 243, 0.96);
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .category-container {
-            width: 100%;
-            text-align: center;
             display: flex;
+
             justify-content: center;
-            gap: 42px;
+            align-items: center;
+
+            gap: 34px;
+
             flex-wrap: wrap;
         }
 
         .category-link {
-            text-decoration: none;
-            color: #333;
+            appearance: none;
+
+            border: 0;
+            background: none;
+
+            padding: 0;
+
+            color: #555;
+
+            font-family: inherit;
+
+            font-size: 13px;
             font-weight: 500;
-            font-size: 14px;
+
             text-transform: uppercase;
             letter-spacing: 1px;
+
             cursor: pointer;
-            transition: color 0.3s;
-            border: none;
-            background: none;
-            padding: 0;
+
+            transition:
+                color 0.3s ease,
+                border-color 0.3s ease;
         }
 
-        .category-link:hover,
-        .category-link.active {
+        .category-link:hover {
             color: #000;
         }
 
         .category-link.active {
+            color: #000;
+
             border-bottom: 2px solid #000;
+
             padding-bottom: 5px;
         }
 
-        /* =========================
-           GALLERY
-        ========================= */
+
+        /* =====================================================
+           GALERIES
+        ===================================================== */
 
         .gallery-section {
             padding: 90px 0 110px;
-            scroll-margin-top: 120px;
+
+            scroll-margin-top: 155px;
         }
 
         .gallery-title {
-            font-size: clamp(30px, 4vw, 42px);
-            margin-bottom: 16px;
+            margin-bottom: 15px;
+
             text-align: center;
+
             color: #171717;
+
+            font-size: clamp(30px, 4vw, 42px);
+
             font-weight: 400;
+
             letter-spacing: 1.5px;
         }
 
         .gallery-description {
+            max-width: 700px;
+
+            margin: 0 auto 55px;
+
             text-align: center;
+
             color: #777;
-            margin-bottom: 55px;
+
             font-size: 15px;
+
             line-height: 1.9;
-            max-width: 680px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
+
+        /* =====================================================
+           GRILLE PHOTOS
+        ===================================================== */
+
         .gallery-grid {
-            columns: 3 320px;
+            columns: 3 300px;
+
             column-gap: 24px;
-            margin-bottom: 20px;
         }
 
         .gallery-item {
             position: relative;
+
             break-inside: avoid;
+
             margin: 0 0 24px;
+
             overflow: hidden;
+
             background: #efede8;
+
             border-radius: 2px;
+
             cursor: pointer;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, 0.04);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
         }
 
         .gallery-item:hover {
             transform: translateY(-4px);
-            box-shadow: 0 14px 38px rgba(0, 0, 0, 0.10);
+
+            box-shadow:
+                0 14px 38px rgba(0, 0, 0, 0.10);
         }
 
         .gallery-item img {
+            display: block;
+
             width: 100%;
             height: auto;
-            display: block;
-            transition: transform 0.5s ease;
+
+            transition:
+                transform 0.5s ease;
         }
 
         .gallery-item:hover img {
             transform: scale(1.015);
         }
 
+
+        /* Voile au survol */
+
         .gallery-item-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                to top,
-                rgba(0,0,0,0.35),
-                rgba(0,0,0,0.02) 45%
-            );
-            opacity: 0;
-            transition: opacity 0.3s ease;
+
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
+
             padding: 18px;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,0.38),
+                    rgba(0,0,0,0.02) 50%
+                );
+
+            opacity: 0;
+
+            transition: opacity 0.3s ease;
         }
 
         .gallery-item:hover .gallery-item-overlay {
@@ -285,133 +498,223 @@
 
         .gallery-item-overlay span {
             color: #fff;
-            font-weight: 500;
+
             font-size: 11px;
+            font-weight: 500;
+
             text-transform: uppercase;
+
             letter-spacing: 1.5px;
         }
 
-        /* =========================
+
+        /* =====================================================
            LIGHTBOX
-        ========================= */
+        ===================================================== */
 
         .lightbox {
             display: none;
+
             position: fixed;
             inset: 0;
-            width: 100%;
-            height: 100%;
+
             z-index: 1000;
+
             align-items: center;
             justify-content: center;
-            padding: 30px 80px;
-            background-size: cover;
+
+            padding: 45px 80px;
+
+            background:
+                rgba(250, 248, 243, 0.88);
+
             background-position: center;
-            background-attachment: fixed;
+            background-size: cover;
+
+            overflow: hidden;
         }
 
         .lightbox.active {
             display: flex;
         }
 
-        /* Fond sombre + flou */
-        .lightbox.active::before {
-            content: '';
+
+        /* Fond flou */
+
+        .lightbox::before {
+            content: "";
+
             position: absolute;
             inset: 0;
-            background: rgba(250, 248, 243, 0.78);
+
+            background:
+                rgba(250, 248, 243, 0.82);
+
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            z-index: 999;
+
+            z-index: 0;
         }
+
+
+        /* Conteneur de la photo */
+
+        .lightbox-content {
+            position: relative;
+
+            z-index: 2;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: auto;
+            height: auto;
+
+            max-width: 90vw;
+            max-height: 88vh;
+        }
+
 
         /*
          * IMPORTANT :
-         * Le conteneur ne force plus une largeur/hauteur.
-         * L'image conserve donc son ratio original.
+         *
+         * width / height restent en auto.
+         *
+         * La photo garde donc son ratio.
+         *
+         * max-width / max-height empêchent
+         * la photo de sortir de l'écran.
          */
-        .lightbox-content {
-            position: relative;
-            z-index: 1001;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            max-width: 90vw;
-            max-height: 90vh;
-        }
 
-        /*
-         * Correction principale du problème de photo tronquée.
-         * L'image s'adapte à l'écran sans être coupée.
-         */
         .lightbox-img {
             display: block;
-            width: auto;
-            height: auto;
-            max-width: 90vw;
-            max-height: 84vh;
+
+            width: auto !important;
+            height: auto !important;
+
+            max-width: 90vw !important;
+            max-height: 82vh !important;
+
             object-fit: contain;
+
             border-radius: 2px;
-            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.18);
+
+            box-shadow:
+                0 18px 70px rgba(0, 0, 0, 0.20);
         }
+
+
+        /* =====================================================
+           BOUTON FERMER
+        ===================================================== */
 
         .lightbox-close {
             position: absolute;
-            top: -45px;
+
+            top: -48px;
             right: 0;
-            width: 38px;
-            height: 38px;
+
+            width: 40px;
+            height: 40px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             color: #333;
-            font-size: 34px;
+
+            font-size: 36px;
+            font-weight: 300;
+
             line-height: 1;
+
             cursor: pointer;
-            transition: color 0.3s, transform 0.3s;
-            z-index: 1002;
+
+            z-index: 5;
+
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease;
         }
 
         .lightbox-close:hover {
             color: #000;
+
             transform: scale(1.08);
         }
 
+
+        /* =====================================================
+           COMPTEUR
+        ===================================================== */
+
         .lightbox-counter {
             position: absolute;
-            bottom: -38px;
+
             left: 50%;
+            bottom: -40px;
+
             transform: translateX(-50%);
+
             color: #333;
+
             font-size: 13px;
+
             letter-spacing: 1px;
-            z-index: 1002;
+
             white-space: nowrap;
         }
 
+
+        /* =====================================================
+           FLECHES
+        ===================================================== */
+
         .lightbox-arrow {
             position: fixed;
+
             top: 50%;
+
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 24px;
-            color: #333;
-            cursor: pointer;
+
+            z-index: 5;
+
+            width: 52px;
+            height: 52px;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.3s, color 0.3s, transform 0.3s;
-            z-index: 1002;
+
+            border: 0;
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.92);
+
+            color: #333;
+
+            font-size: 24px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.08);
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease;
         }
 
         .lightbox-arrow:hover {
             background: #fff;
             color: #000;
-            transform: translateY(-50%) scale(1.05);
+
+            transform:
+                translateY(-50%)
+                scale(1.06);
         }
 
         .lightbox-prev {
@@ -422,15 +725,19 @@
             right: 20px;
         }
 
-        /* =========================
+
+        /* =====================================================
            FOOTER
-        ========================= */
+        ===================================================== */
 
         footer {
-            background: #faf8f3;
-            padding: 60px 0;
+            padding: 65px 0;
+
             text-align: center;
+
             border-top: 1px solid #e8e6e0;
+
+            background: #faf8f3;
         }
 
         .footer-content {
@@ -438,24 +745,40 @@
         }
 
         .footer-content p {
+            margin-bottom: 8px;
+
             color: #666;
+
             font-size: 14px;
-            margin-bottom: 10px;
+        }
+
+        .footer-main-text {
+            color: #333 !important;
+
+            font-size: 16px !important;
+
+            font-weight: 600;
         }
 
         .social-links {
             display: flex;
+
             justify-content: center;
+
             gap: 30px;
         }
 
         .social-links a {
             color: #333;
+
             text-decoration: none;
+
+            font-size: 13px;
             font-weight: 600;
-            font-size: 14px;
+
             text-transform: uppercase;
-            transition: color 0.3s;
+
+            transition: color 0.3s ease;
         }
 
         .social-links a:hover {
@@ -463,58 +786,36 @@
         }
 
         .copyright {
-            color: #999;
-            font-size: 12px;
             margin-top: 30px;
+
+            color: #999;
+
+            font-size: 12px;
         }
 
-        /* =========================
+
+        /* =====================================================
            TABLETTE
-        ========================= */
+        ===================================================== */
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
 
-            header {
-                padding: 18px 0;
+            .container {
+                padding: 0 20px;
             }
 
             nav {
-                gap: 15px;
-            }
+                min-height: 72px;
 
-            .logo {
-                font-size: 17px;
-            }
-
-            .nav-menu {
-                gap: 12px;
-            }
-
-            .hero {
-                padding: 95px 0;
-                background-attachment: scroll;
-            }
-
-            .hero h1 {
-                font-size: 34px;
-            }
-
-            .gallery-section {
-                padding: 65px 0 80px;
-                scroll-margin-top: 100px;
-            }
-
-            .gallery-grid {
-                columns: 2 220px;
-                column-gap: 16px;
-            }
-
-            .gallery-item {
-                margin-bottom: 16px;
+                gap: 20px;
             }
 
             .categories {
-                padding: 30px 0;
+                top: 72px;
+            }
+
+            .nav-menu {
+                gap: 18px;
             }
 
             .nav-menu a {
@@ -525,41 +826,175 @@
                 padding: 9px 15px;
             }
 
+            .future-logo {
+                width: 48px;
+                height: 48px;
+            }
+
+            .logo {
+                font-size: 19px;
+            }
+
+            .hero {
+                min-height: 540px;
+
+                background-attachment: scroll;
+            }
+
+            .gallery-grid {
+                columns: 2 240px;
+
+                column-gap: 18px;
+            }
+
+            .gallery-item {
+                margin-bottom: 18px;
+            }
+
+            .category-container {
+                gap: 25px;
+            }
+
             .lightbox {
-                padding: 25px 55px;
+                padding: 35px 60px;
             }
 
             .lightbox-img {
-                max-width: 88vw;
-                max-height: 82vh;
-            }
-
-            .lightbox-prev {
-                left: 8px;
-            }
-
-            .lightbox-next {
-                right: 8px;
+                max-width: 88vw !important;
+                max-height: 80vh !important;
             }
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
 
-        @media (max-width: 480px) {
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
 
             .container {
                 padding: 0 14px;
             }
 
-            .gallery-grid {
-                columns: 1;
-                column-gap: 0;
+
+            /* Header mobile */
+
+            header {
+                position: sticky;
             }
 
-            .gallery-item {
-                margin-bottom: 16px;
+            nav {
+                min-height: 64px;
+
+                gap: 8px;
+            }
+
+            .brand {
+                gap: 8px;
+            }
+
+            .future-logo {
+                width: 38px;
+                height: 38px;
+
+                font-size: 6px;
+            }
+
+            .logo {
+                font-size: 14px;
+
+                letter-spacing: 0;
+            }
+
+
+            /* Menu */
+
+            .nav-menu {
+                gap: 8px;
+            }
+
+            .nav-menu a {
+                font-size: 9px;
+
+                letter-spacing: 0.3px;
+            }
+
+            .contact-btn {
+                padding: 7px 9px;
+
+                font-size: 9px;
+            }
+
+
+            /* Catégories */
+
+            .categories {
+                top: 64px;
+
+                padding: 22px 0;
+            }
+
+            .category-container {
+                justify-content: flex-start;
+
+                flex-wrap: nowrap;
+
+                overflow-x: auto;
+
+                gap: 25px;
+
+                padding:
+                    0 14px 6px;
+
+                scrollbar-width: none;
+            }
+
+            .category-container::-webkit-scrollbar {
+                display: none;
+            }
+
+            .category-link {
+                flex: 0 0 auto;
+
+                font-size: 10px;
+            }
+
+
+            /* Hero */
+
+            .hero {
+                min-height: 500px;
+
+                padding: 75px 0;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+
+                letter-spacing: 1px;
+            }
+
+            .hero p {
+                font-size: 15px;
+
+                padding: 0 10px;
+
+                margin-bottom: 30px;
+            }
+
+            .hero-btn {
+                padding: 13px 25px;
+
+                font-size: 13px;
+            }
+
+
+            /* Galeries */
+
+            .gallery-section {
+                padding: 65px 0 80px;
+
+                scroll-margin-top: 120px;
             }
 
             .gallery-title {
@@ -568,83 +1003,50 @@
 
             .gallery-description {
                 margin-bottom: 38px;
+
                 font-size: 14px;
+
+                padding: 0 5px;
             }
 
-            .hero {
-                padding: 80px 0;
+            .gallery-grid {
+                columns: 1;
             }
 
-            .hero h1 {
-                font-size: 28px;
+            .gallery-item {
+                margin-bottom: 16px;
             }
 
-            nav {
-                gap: 8px;
-            }
-
-            .logo {
-                font-size: 14px;
-                letter-spacing: 0;
-            }
-
-            .nav-menu {
-                gap: 8px;
-            }
-
-            .nav-menu a {
-                font-size: 10px;
-            }
-
-            .contact-btn {
-                padding: 8px 11px;
-                font-size: 10px;
-            }
-
-            .categories .container {
-                display: flex !important;
-                justify-content: flex-start !important;
-                flex-wrap: nowrap !important;
-                overflow-x: auto;
-                gap: 24px !important;
-                padding-bottom: 8px;
-                scrollbar-width: none;
-            }
-
-            .categories .container::-webkit-scrollbar {
-                display: none;
-            }
-
-            .category-link {
-                flex: 0 0 auto;
-                font-size: 11px;
-            }
 
             /* Lightbox mobile */
+
             .lightbox {
-                padding: 20px 42px;
+                padding: 35px 45px;
             }
 
             .lightbox-img {
-                max-width: 92vw;
-                max-height: 78vh;
+                max-width: 92vw !important;
+                max-height: 76vh !important;
             }
 
             .lightbox-close {
                 top: -42px;
                 right: -2px;
-                font-size: 30px;
+
+                font-size: 31px;
             }
 
             .lightbox-counter {
-                bottom: -34px;
+                bottom: -35px;
+
                 font-size: 11px;
             }
 
             .lightbox-arrow {
                 width: 38px;
                 height: 38px;
-                font-size: 19px;
+
+                font-size: 18px;
             }
 
             .lightbox-prev {
@@ -654,120 +1056,241 @@
             .lightbox-next {
                 right: 5px;
             }
+
+
+            /* Footer */
+
+            footer {
+                padding: 50px 0;
+            }
         }
+
+
+        /* =====================================================
+           TRÈS PETITS TÉLÉPHONES
+        ===================================================== */
+
+        @media (max-width: 380px) {
+
+            .future-logo {
+                width: 34px;
+                height: 34px;
+            }
+
+            .logo {
+                font-size: 12px;
+            }
+
+            .nav-menu {
+                gap: 5px;
+            }
+
+            .nav-menu a {
+                font-size: 8px;
+            }
+
+            .contact-btn {
+                padding: 6px 7px;
+            }
+
+            .hero h1 {
+                font-size: 27px;
+            }
+
+            .lightbox {
+                padding-left: 38px;
+                padding-right: 38px;
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- =========================
+
+    <!-- =====================================================
          HEADER
-    ========================= -->
+    ===================================================== -->
 
     <header>
+
         <div class="container">
+
             <nav>
 
-                <!-- Logo cliquable : retour accueil -->
-                <a href="#accueil" class="logo-link">
-                    <div class="logo">Romain photographie</div>
+                <!--
+                    TON LOGO FUTUR EST ICI
+
+                    Quand tu auras ton vrai logo,
+                    tu pourras remplacer le bloc .future-logo
+                    par une image.
+                -->
+
+                <a href="index.html" class="brand">
+
+                    <div class="future-logo">
+                        LOGO
+                    </div>
+
+                    <div class="logo">
+                        Romain photographie
+                    </div>
+
                 </a>
 
+
+                <!-- MENU -->
+
                 <ul class="nav-menu">
+
                     <li>
-                        <a href="#accueil" class="nav-link active">
+                        <a
+                            href="index.html"
+                            class="nav-link active"
+                        >
                             Accueil
                         </a>
                     </li>
 
                     <li>
-                        <a href="#galeries" class="nav-link">
+                        <a
+                            href="#galeries"
+                            class="nav-link"
+                        >
                             Galeries
                         </a>
                     </li>
 
                     <li>
-                        <a href="contact.html" class="contact-btn">
+                        <a
+                            href="contact.html"
+                            class="contact-btn"
+                        >
                             Contact
                         </a>
                     </li>
+
                 </ul>
 
             </nav>
+
         </div>
+
     </header>
 
 
-    <!-- =========================
+    <!-- =====================================================
          HERO
-    ========================= -->
+    ===================================================== -->
 
     <section class="hero" id="accueil">
+
         <div class="container">
 
-            <h1>Photographe de Moments Précieux</h1>
+            <h1>
+                Photographe de Moments Précieux
+            </h1>
 
             <p>
                 Capturer l'essence de vos instants les plus importants
             </p>
 
-            <a href="#galeries" class="hero-btn">
+            <a
+                href="#galeries"
+                class="hero-btn"
+            >
                 Découvrir mes galeries
             </a>
 
         </div>
+
     </section>
 
 
-    <!-- =========================
-         CATEGORIES
-    ========================= -->
+    <!-- =====================================================
+         CATÉGORIES
+    ===================================================== -->
 
-    <section class="categories" id="galeries">
+    <section
+        class="categories"
+        id="galeries"
+    >
 
         <div class="container category-container">
 
-            <button class="category-link active" data-category="mariage">
+            <button
+                type="button"
+                class="category-link active"
+                data-category="mariage"
+            >
                 Mariage
             </button>
 
-            <button class="category-link" data-category="portrait">
+            <button
+                type="button"
+                class="category-link"
+                data-category="portrait"
+            >
                 Portrait
             </button>
 
-            <button class="category-link" data-category="couple">
+            <button
+                type="button"
+                class="category-link"
+                data-category="couple"
+            >
                 Couple
             </button>
 
-            <button class="category-link" data-category="famille">
+            <button
+                type="button"
+                class="category-link"
+                data-category="famille"
+            >
                 Famille
             </button>
 
-            <button class="category-link" data-category="grossesse">
+            <button
+                type="button"
+                class="category-link"
+                data-category="grossesse"
+            >
                 Grossesse
             </button>
 
-            <button class="category-link" data-category="paysage">
+            <button
+                type="button"
+                class="category-link"
+                data-category="paysage"
+            >
                 Paysage
             </button>
 
-            <button class="category-link" data-category="nature">
+            <button
+                type="button"
+                class="category-link"
+                data-category="nature"
+            >
                 Nature
             </button>
 
         </div>
+
     </section>
 
 
-    <!-- =========================
-         GALERIES
-    ========================= -->
+    <!-- =====================================================
+         CONTENU DES GALERIES
+    ===================================================== -->
 
-    <div class="container">
+    <main class="container">
 
-        <!-- =====================
+
+        <!-- =================================================
              MARIAGE
-        ====================== -->
+        ================================================= -->
 
         <section
             class="gallery-section"
@@ -784,106 +1307,144 @@
                 Discrétion, élégance et émotion à travers chaque cliché.
             </p>
 
+
             <div class="gallery-grid">
 
+
                 <div
                     class="gallery-item"
                     onclick="openLightbox(this)"
                 >
+
                     <img
                         src="images/mariage/FB_IMG_1788289733110.jpg"
-                        alt="Mariage 1"
+                        alt="Photographie de mariage"
+                        loading="lazy"
                     >
+
                     <div class="gallery-item-overlay">
                         <span>Voir</span>
                     </div>
+
                 </div>
+
 
                 <div
                     class="gallery-item"
                     onclick="openLightbox(this)"
                 >
+
                     <img
                         src="images/mariage/FB_IMG_1788289760373.jpg"
-                        alt="Mariage 2"
+                        alt="Photographie de mariage"
+                        loading="lazy"
                     >
+
                     <div class="gallery-item-overlay">
                         <span>Voir</span>
                     </div>
+
                 </div>
+
 
                 <div
                     class="gallery-item"
                     onclick="openLightbox(this)"
                 >
+
                     <img
                         src="images/mariage/FB_IMG_1788289837930.jpg"
-                        alt="Mariage 3"
+                        alt="Photographie de mariage"
+                        loading="lazy"
                     >
+
                     <div class="gallery-item-overlay">
                         <span>Voir</span>
                     </div>
+
                 </div>
+
 
                 <div
                     class="gallery-item"
                     onclick="openLightbox(this)"
                 >
+
                     <img
                         src="images/mariage/FB_IMG_1788289857757.jpg"
-                        alt="Mariage 4"
+                        alt="Photographie de mariage"
+                        loading="lazy"
                     >
+
                     <div class="gallery-item-overlay">
                         <span>Voir</span>
                     </div>
+
                 </div>
+
 
                 <div
                     class="gallery-item"
                     onclick="openLightbox(this)"
                 >
+
                     <img
                         src="images/mariage/FB_IMG_1788289872537.jpg"
-                        alt="Mariage 5"
+                        alt="Photographie de mariage"
+                        loading="lazy"
                     >
+
                     <div class="gallery-item-overlay">
                         <span>Voir</span>
                     </div>
+
                 </div>
+
 
                 <div
                     class="gallery-item"
                     onclick="openLightbox(this)"
                 >
+
                     <img
                         src="images/mariage/FB_IMG_1788289952279.jpg"
-                        alt="Mariage 6"
+                        alt="Photographie de mariage"
+                        loading="lazy"
                     >
+
                     <div class="gallery-item-overlay">
                         <span>Voir</span>
                     </div>
+
                 </div>
+
 
                 <div
                     class="gallery-item"
                     onclick="openLightbox(this)"
                 >
+
                     <img
                         src="images/mariage/FB_IMG_1788289963148.jpg"
-                        alt="Mariage 7"
+                        alt="Photographie de mariage"
+                        loading="lazy"
                     >
+
                     <div class="gallery-item-overlay">
                         <span>Voir</span>
                     </div>
+
                 </div>
 
+
             </div>
+
         </section>
 
 
-        <!-- =====================
+        <!-- =================================================
              PORTRAIT
-        ====================== -->
+        ================================================= -->
 
         <section
             class="gallery-section"
@@ -897,64 +1458,94 @@
             </h2>
 
             <p class="gallery-description">
-                Révéler votre essence à travers des portraits authentiques
-                et lumineux en lumière naturelle.
+                Révéler votre essence à travers des portraits
+                authentiques et lumineux en lumière naturelle.
             </p>
+
 
             <div class="gallery-grid">
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=800&fit=crop" alt="Portrait 1">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?w=600&h=600&fit=crop" alt="Portrait 2">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1200"
+                        alt="Portrait"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1470886185043-a9bcde4e98df?w=800&h=600&fit=crop" alt="Portrait 3">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop" alt="Portrait 4">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?w=1200"
+                        alt="Portrait"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop" alt="Portrait 5">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=600&fit=crop" alt="Portrait 6">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1470886185043-a9bcde4e98df?w=1200"
+                        alt="Portrait"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1520763185298-1b434c919abe?w=600&h=800&fit=crop" alt="Portrait 7">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1516035069371-29a08e8db338?w=800&h=600&fit=crop" alt="Portrait 8">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200"
+                        alt="Portrait"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
+
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1519761881033-1fcd3a36ef34?w=600&h=600&fit=crop" alt="Portrait 9">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200"
+                        alt="Portrait"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
+
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img
+                        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=1200"
+                        alt="Portrait"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
+                </div>
+
 
             </div>
+
         </section>
 
 
-        <!-- =====================
+        <!-- =================================================
              COUPLE
-        ====================== -->
+        ================================================= -->
 
         <section
             class="gallery-section"
@@ -972,60 +1563,90 @@
                 Des séances empreintes de complicité et d'émotion.
             </p>
 
+
             <div class="gallery-grid">
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1522102073099-fc3ee2dc1d3d?w=600&h=800&fit=crop" alt="Couple 1">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1516019266335-30265b3d4e65?w=600&h=600&fit=crop" alt="Couple 2">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1522102073099-fc3ee2dc1d3d?w=1200"
+                        alt="Photographie de couple"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&h=600&fit=crop" alt="Couple 3">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1552821206-e0b85cc2aadb?w=600&h=800&fit=crop" alt="Couple 4">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1516019266335-30265b3d4e65?w=1200"
+                        alt="Photographie de couple"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop" alt="Couple 5">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1489749798305-4fea3ba63d60?w=600&h=600&fit=crop" alt="Couple 6">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200"
+                        alt="Photographie de couple"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1522853556640-164d72e9e35e?w=600&h=800&fit=crop" alt="Couple 7">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=600&fit=crop" alt="Couple 8">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1552821206-e0b85cc2aadb?w=1200"
+                        alt="Photographie de couple"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
+
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1537633552985-caf6b328d89f?w=600&h=600&fit=crop" alt="Couple 9">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1489749798305-4fea3ba63d60?w=1200"
+                        alt="Photographie de couple"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
+
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img
+                        src="https://images.unsplash.com/photo-1537633552985-caf6b328d89f?w=1200"
+                        alt="Photographie de couple"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
+                </div>
+
 
             </div>
+
         </section>
 
 
-        <!-- =====================
+        <!-- =================================================
              FAMILLE
-        ====================== -->
+        ================================================= -->
 
         <section
             class="gallery-section"
@@ -1039,64 +1660,94 @@
             </h2>
 
             <p class="gallery-description">
-                Capturer les sourires, les rires et les liens qui unissent
-                votre famille dans leurs plus beaux moments.
+                Capturer les sourires, les rires et les liens
+                qui unissent votre famille dans leurs plus beaux moments.
             </p>
+
 
             <div class="gallery-grid">
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=800&fit=crop" alt="Famille 1">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=800&h=600&fit=crop" alt="Famille 2">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1200"
+                        alt="Photographie de famille"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1513325369-16695b6ba4d2?w=600&h=600&fit=crop" alt="Famille 3">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1475536221683-0d5656e9d504?w=600&h=800&fit=crop" alt="Famille 4">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=1200"
+                        alt="Photographie de famille"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1515995471585-351684cd2e8f?w=800&h=600&fit=crop" alt="Famille 5">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1503454537688-e6ba5f287842?w=600&h=600&fit=crop" alt="Famille 6">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1513325369-16695b6ba4d2?w=1200"
+                        alt="Photographie de famille"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1507656961167-fc0cad96a560?w=600&h=800&fit=crop" alt="Famille 7">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1493103671537-7e0e40907d23?w=800&h=600&fit=crop" alt="Famille 8">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1475536221683-0d5656e9d504?w=1200"
+                        alt="Photographie de famille"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
+
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f70504504?w=600&h=600&fit=crop" alt="Famille 9">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1503454537688-e6ba5f287842?w=1200"
+                        alt="Photographie de famille"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
+
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img
+                        src="https://images.unsplash.com/photo-1493103671537-7e0e40907d23?w=1200"
+                        alt="Photographie de famille"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
+                </div>
+
 
             </div>
+
         </section>
 
 
-        <!-- =====================
+        <!-- =================================================
              GROSSESSE
-        ====================== -->
+        ================================================= -->
 
         <section
             class="gallery-section"
@@ -1111,63 +1762,94 @@
 
             <p class="gallery-description">
                 Célébrer la beauté de l'attente.
-                Des séances douces et tendres pour immortaliser ce moment magique.
+                Des séances douces et tendres pour immortaliser
+                ce moment magique.
             </p>
+
 
             <div class="gallery-grid">
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1475253990210-e1da6d5bcd63?w=600&h=800&fit=crop" alt="Grossesse 1">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&h=600&fit=crop" alt="Grossesse 2">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1475253990210-e1da6d5bcd63?w=1200"
+                        alt="Photographie grossesse"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=600&fit=crop" alt="Grossesse 3">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop" alt="Grossesse 4">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=1200"
+                        alt="Photographie grossesse"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&h=600&fit=crop" alt="Grossesse 5">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=600&fit=crop" alt="Grossesse 6">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1493103671537-7e0e40907d23?w=1200"
+                        alt="Photographie grossesse"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1493103671537-7e0e40907d23?w=600&h=800&fit=crop" alt="Grossesse 7">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f70504504?w=800&h=600&fit=crop" alt="Grossesse 8">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=1200"
+                        alt="Photographie grossesse"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
+
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=600&fit=crop" alt="Grossesse 9">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200"
+                        alt="Photographie grossesse"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
+
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img
+                        src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200"
+                        alt="Photographie grossesse"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
+                </div>
+
 
             </div>
+
         </section>
 
 
-        <!-- =====================
+        <!-- =================================================
              PAYSAGE
-        ====================== -->
+        ================================================= -->
 
         <section
             class="gallery-section"
@@ -1181,64 +1863,95 @@
             </h2>
 
             <p class="gallery-description">
-                Les plus beaux décors naturels capturés pour sublimer vos souvenirs.
+                Les plus beaux décors naturels capturés
+                pour sublimer vos souvenirs.
                 Lumière dorée et horizons enchanteurs.
             </p>
 
+
             <div class="gallery-grid">
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=800&fit=crop" alt="Paysage 1">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1469022563149-aa64dbd37dae?w=800&h=600&fit=crop" alt="Paysage 2">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+                        alt="Photographie de paysage"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=600&fit=crop" alt="Paysage 3">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=600&h=800&fit=crop" alt="Paysage 4">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1469022563149-aa64dbd37dae?w=1200"
+                        alt="Photographie de paysage"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" alt="Paysage 5">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=600&h=600&fit=crop" alt="Paysage 6">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200"
+                        alt="Photographie de paysage"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=800&fit=crop" alt="Paysage 7">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1485229607352-3a38e1ff0784?w=800&h=600&fit=crop" alt="Paysage 8">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=1200"
+                        alt="Photographie de paysage"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
+
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=600&fit=crop" alt="Paysage 9">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1200"
+                        alt="Photographie de paysage"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
+
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img
+                        src="https://images.unsplash.com/photo-1485229607352-3a38e1ff0784?w=1200"
+                        alt="Photographie de paysage"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
+                </div>
+
 
             </div>
+
         </section>
 
 
-        <!-- =====================
+        <!-- =================================================
              NATURE
-        ====================== -->
+        ================================================= -->
 
         <section
             class="gallery-section"
@@ -1256,67 +1969,113 @@
                 Détails époustouflants et couleurs vivantes.
             </p>
 
+
             <div class="gallery-grid">
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=600&fit=crop" alt="Nature 1">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600&h=600&fit=crop" alt="Nature 2">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200"
+                        alt="Photographie de nature"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=600&fit=crop" alt="Nature 3">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1470114716159-e389f8712fda?w=600&h=600&fit=crop" alt="Nature 4">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1200"
+                        alt="Photographie de nature"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=600&fit=crop" alt="Nature 5">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
-                </div>
 
                 <div class="gallery-item" onclick="openLightbox(this)">
-                    <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600&h=600&fit=crop" alt="Nature 6">
-                    <div class="gallery-item-overlay"><span>Voir</span></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1470114716159-e389f8712fda?w=1200"
+                        alt="Photographie de nature"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
                 </div>
+
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img
+                        src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200"
+                        alt="Photographie de nature"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
+                </div>
+
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img
+                        src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1200"
+                        alt="Photographie de nature"
+                        loading="lazy"
+                    >
+                    <div class="gallery-item-overlay">
+                        <span>Voir</span>
+                    </div>
+                </div>
+
 
             </div>
+
         </section>
 
-    </div>
+    </main>
 
 
-    <!-- =========================
+    <!-- =====================================================
          LIGHTBOX
-    ========================= -->
+    ===================================================== -->
 
-    <div class="lightbox" id="lightbox">
+    <div
+        class="lightbox"
+        id="lightbox"
+        aria-hidden="true"
+    >
+
+
+        <!-- Flèche précédente -->
 
         <button
+            type="button"
             class="lightbox-arrow lightbox-prev"
             onclick="prevLightboxImage()"
-            aria-label="Image précédente"
+            aria-label="Photo précédente"
         >
             &#10094;
         </button>
 
+
+        <!-- Photo -->
+
         <div class="lightbox-content">
 
-            <span
+            <button
+                type="button"
                 class="lightbox-close"
                 onclick="closeLightbox()"
                 aria-label="Fermer"
             >
                 &times;
-            </span>
+            </button>
+
 
             <img
                 id="lightbox-img"
@@ -1325,6 +2084,7 @@
                 alt=""
             >
 
+
             <span
                 class="lightbox-counter"
                 id="lightbox-counter"
@@ -1332,20 +2092,25 @@
 
         </div>
 
+
+        <!-- Flèche suivante -->
+
         <button
+            type="button"
             class="lightbox-arrow lightbox-next"
             onclick="nextLightboxImage()"
-            aria-label="Image suivante"
+            aria-label="Photo suivante"
         >
             &#10095;
         </button>
 
+
     </div>
 
 
-    <!-- =========================
+    <!-- =====================================================
          FOOTER
-    ========================= -->
+    ===================================================== -->
 
     <footer id="contact">
 
@@ -1357,17 +2122,12 @@
                     Vous aimez ce que vous voyez ?
                 </p>
 
-                <p
-                    style="
-                        font-size: 16px;
-                        color: #333;
-                        font-weight: 600;
-                    "
-                >
+                <p class="footer-main-text">
                     Écrivez-moi pour réserver votre séance
                 </p>
 
             </div>
+
 
             <div class="social-links">
 
@@ -1381,174 +2141,294 @@
 
             </div>
 
-            <div class="copyright">
-                © 2026 Romain photographie. Tous droits réservés.
-            </div>
+
+            <p class="copyright">
+                © 2026 Romain photographie.
+                Tous droits réservés.
+            </p>
 
         </div>
 
     </footer>
 
 
-    <!-- =========================
+    <!-- =====================================================
          JAVASCRIPT
-    ========================= -->
+    ===================================================== -->
 
     <script>
 
-        /* =========================
-           CATEGORY SWITCHING
-        ========================= */
+        /* =====================================================
+           VARIABLES LIGHTBOX
+        ===================================================== */
 
-        document.querySelectorAll('.category-link').forEach(link => {
+        let currentGalleryImages = [];
+        let currentGalleryAlts = [];
+        let currentImageIndex = 0;
 
-            link.addEventListener('click', function () {
 
-                const category = this.dataset.category;
+        /* =====================================================
+           CHANGEMENT DE GALERIE
+        ===================================================== */
 
-                /* Cacher toutes les galeries */
-                document.querySelectorAll('[id^="galerie-"]').forEach(section => {
-                    section.style.display = 'none';
+        const categoryLinks =
+            document.querySelectorAll(".category-link");
+
+        const gallerySections =
+            document.querySelectorAll(
+                ".gallery-section"
+            );
+
+
+        categoryLinks.forEach(link => {
+
+            link.addEventListener("click", function () {
+
+                const category =
+                    this.dataset.category;
+
+
+                /*
+                 * Cacher toutes les galeries
+                 */
+
+                gallerySections.forEach(section => {
+
+                    section.style.display = "none";
+
                 });
 
-                /* Retirer active */
-                document.querySelectorAll('.category-link').forEach(l => {
-                    l.classList.remove('active');
+
+                /*
+                 * Retirer active de tous les boutons
+                 */
+
+                categoryLinks.forEach(button => {
+
+                    button.classList.remove("active");
+
                 });
 
-                /* Afficher la galerie sélectionnée */
+
+                /*
+                 * Activer le bouton
+                 */
+
+                this.classList.add("active");
+
+
+                /*
+                 * Afficher la bonne galerie
+                 */
+
                 const selectedGallery =
-                    document.getElementById('galerie-' + category);
+                    document.getElementById(
+                        "galerie-" + category
+                    );
 
-                if (selectedGallery) {
 
-                    selectedGallery.style.display = 'block';
-
-                    this.classList.add('active');
-
-                    /* Petit délai pour laisser le navigateur afficher la section */
-                    setTimeout(() => {
-
-                        selectedGallery.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-
-                    }, 50);
+                if (!selectedGallery) {
+                    return;
                 }
+
+
+                selectedGallery.style.display = "block";
+
+
+                /*
+                 * Remonter doucement au début
+                 * de la galerie.
+                 */
+
+                setTimeout(() => {
+
+                    selectedGallery.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }, 50);
 
             });
 
         });
 
 
-        /* =========================
-           LIGHTBOX
-        ========================= */
+        /* =====================================================
+           OUVRIR LIGHTBOX
+        ===================================================== */
 
-        let currentGalleryImages = [];
-        let currentImageIndex = 0;
+        function openLightbox(element) {
 
+            const gallery =
+                element.closest(".gallery-grid");
 
-        function openLightbox(el) {
-
-            /* Galerie correspondant à l'image cliquée */
-            const gallery = el.closest('.gallery-grid');
 
             if (!gallery) {
                 return;
             }
 
-            /* Récupérer toutes les images de cette galerie */
+
+            /*
+             * Récupérer toutes les photos
+             * de la galerie actuelle.
+             */
+
             const items =
                 Array.from(
-                    gallery.querySelectorAll('.gallery-item')
+                    gallery.querySelectorAll(
+                        ".gallery-item"
+                    )
                 );
 
-            currentGalleryImages =
-                items.map(item => {
 
-                    const image = item.querySelector('img');
+            currentGalleryImages = [];
 
-                    return image ? image.src : '';
-
-                }).filter(src => src !== '');
+            currentGalleryAlts = [];
 
 
-            currentImageIndex = items.indexOf(el);
+            items.forEach(item => {
 
-            if (currentImageIndex === -1) {
+                const image =
+                    item.querySelector("img");
+
+
+                if (image) {
+
+                    currentGalleryImages.push(
+                        image.src
+                    );
+
+                    currentGalleryAlts.push(
+                        image.alt || "Photographie"
+                    );
+
+                }
+
+            });
+
+
+            currentImageIndex =
+                items.indexOf(element);
+
+
+            if (
+                currentImageIndex < 0 ||
+                currentImageIndex >= currentGalleryImages.length
+            ) {
+
                 currentImageIndex = 0;
+
             }
 
 
             const lightbox =
-                document.getElementById('lightbox');
+                document.getElementById("lightbox");
 
 
-            showLightboxImage(currentImageIndex);
+            /*
+             * Afficher la première photo
+             */
+
+            showLightboxImage(
+                currentImageIndex
+            );
 
 
-            lightbox.classList.add('active');
+            /*
+             * Afficher la lightbox
+             */
 
-            document.body.style.overflow = 'hidden';
+            lightbox.classList.add("active");
+
+            lightbox.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            document.body.classList.add(
+                "lightbox-open"
+            );
 
         }
 
 
+        /* =====================================================
+           AFFICHER UNE PHOTO
+        ===================================================== */
+
         function showLightboxImage(index) {
 
             if (
-                currentGalleryImages.length === 0 ||
-                !currentGalleryImages[index]
+                !currentGalleryImages.length
             ) {
                 return;
             }
 
-            const imgSrc =
+
+            const imageSrc =
                 currentGalleryImages[index];
 
+
+            const imageAlt =
+                currentGalleryAlts[index] ||
+                "Photographie";
+
+
             const lightbox =
-                document.getElementById('lightbox');
+                document.getElementById(
+                    "lightbox"
+                );
 
-            const lightboxImg =
-                document.getElementById('lightbox-img');
 
-
-            /*
-             * Image principale :
-             * elle garde ses proportions originales.
-             */
-            lightboxImg.src = imgSrc;
+            const lightboxImage =
+                document.getElementById(
+                    "lightbox-img"
+                );
 
 
             /*
-             * Image floutée en arrière-plan.
+             * Image principale
              */
+
+            lightboxImage.src = imageSrc;
+
+            lightboxImage.alt = imageAlt;
+
+
+            /*
+             * Fond flou basé sur la photo
+             */
+
             lightbox.style.backgroundImage =
-                `url("${imgSrc}")`;
-
-            lightbox.style.backgroundSize = 'cover';
-
-            lightbox.style.backgroundPosition = 'center';
+                `url("${imageSrc}")`;
 
 
             /*
              * Compteur
              */
-            document.getElementById('lightbox-counter').textContent =
-                (index + 1) +
-                ' / ' +
-                currentGalleryImages.length;
+
+            document.getElementById(
+                "lightbox-counter"
+            ).textContent =
+                `${index + 1} / ${currentGalleryImages.length}`;
 
         }
 
 
+        /* =====================================================
+           PHOTO PRÉCÉDENTE
+        ===================================================== */
+
         function prevLightboxImage() {
 
-            if (currentGalleryImages.length === 0) {
+            if (
+                currentGalleryImages.length === 0
+            ) {
                 return;
             }
+
 
             currentImageIndex =
                 (
@@ -1559,16 +2439,25 @@
                 currentGalleryImages.length;
 
 
-            showLightboxImage(currentImageIndex);
+            showLightboxImage(
+                currentImageIndex
+            );
 
         }
 
 
+        /* =====================================================
+           PHOTO SUIVANTE
+        ===================================================== */
+
         function nextLightboxImage() {
 
-            if (currentGalleryImages.length === 0) {
+            if (
+                currentGalleryImages.length === 0
+            ) {
                 return;
             }
+
 
             currentImageIndex =
                 (
@@ -1578,110 +2467,211 @@
                 currentGalleryImages.length;
 
 
-            showLightboxImage(currentImageIndex);
+            showLightboxImage(
+                currentImageIndex
+            );
 
         }
 
+
+        /* =====================================================
+           FERMER LIGHTBOX
+        ===================================================== */
 
         function closeLightbox() {
 
             const lightbox =
-                document.getElementById('lightbox');
+                document.getElementById(
+                    "lightbox"
+                );
 
 
-            lightbox.classList.remove('active');
+            lightbox.classList.remove(
+                "active"
+            );
+
+
+            lightbox.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            lightbox.style.backgroundImage =
+                "none";
+
+
+            document.body.classList.remove(
+                "lightbox-open"
+            );
 
 
             /*
-             * On enlève l'image de fond
-             * quand la lightbox est fermée.
+             * On vide la source après fermeture.
              */
-            lightbox.style.backgroundImage = 'none';
 
+            setTimeout(() => {
 
-            document.body.style.overflow = '';
+                document.getElementById(
+                    "lightbox-img"
+                ).src = "";
+
+            }, 200);
 
         }
 
 
-        /* =========================
-           FERMER EN CLIQUANT EN DEHORS
-        ========================= */
+        /* =====================================================
+           CLIC EN DEHORS DE LA PHOTO
+        ===================================================== */
 
         document
-            .getElementById('lightbox')
-            .addEventListener('click', function (e) {
+            .getElementById("lightbox")
+            .addEventListener(
+                "click",
+                function (event) {
 
-                if (e.target === this) {
-                    closeLightbox();
-                }
+                    /*
+                     * Si on clique sur le fond
+                     */
 
-            });
+                    if (
+                        event.target === this
+                    ) {
 
-
-        /* =========================
-           CLAVIER
-        ========================= */
-
-        document.addEventListener('keydown', function (e) {
-
-            const lightbox =
-                document.getElementById('lightbox');
-
-
-            if (!lightbox.classList.contains('active')) {
-                return;
-            }
-
-
-            if (e.key === 'Escape') {
-
-                closeLightbox();
-
-            } else if (e.key === 'ArrowLeft') {
-
-                prevLightboxImage();
-
-            } else if (e.key === 'ArrowRight') {
-
-                nextLightboxImage();
-
-            }
-
-        });
-
-
-        /* =========================
-           NAVIGATION ACCUEIL / GALERIES
-        ========================= */
-
-        document
-            .querySelectorAll('a[href^="#"]')
-            .forEach(link => {
-
-                link.addEventListener('click', function (e) {
-
-                    const targetId =
-                        this.getAttribute('href');
-
-                    const target =
-                        document.querySelector(targetId);
-
-
-                    if (target) {
-
-                        e.preventDefault();
-
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+                        closeLightbox();
 
                     }
 
-                });
+                }
+            );
+
+
+        /* =====================================================
+           CLAVIER
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                const lightbox =
+                    document.getElementById(
+                        "lightbox"
+                    );
+
+
+                if (
+                    !lightbox.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                /*
+                 * Échap
+                 */
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeLightbox();
+
+                }
+
+
+                /*
+                 * Flèche gauche
+                 */
+
+                else if (
+                    event.key === "ArrowLeft"
+                ) {
+
+                    prevLightboxImage();
+
+                }
+
+
+                /*
+                 * Flèche droite
+                 */
+
+                else if (
+                    event.key === "ArrowRight"
+                ) {
+
+                    nextLightboxImage();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           NAVIGATION DU MENU
+        ===================================================== */
+
+        document
+            .querySelectorAll(
+                'a[href^="#"]'
+            )
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    function (event) {
+
+                        const targetId =
+                            this.getAttribute(
+                                "href"
+                            );
+
+
+                        const target =
+                            document.querySelector(
+                                targetId
+                            );
+
+
+                        if (!target) {
+                            return;
+                        }
+
+
+                        event.preventDefault();
+
+
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                    }
+                );
 
             });
+
+
+        /* =====================================================
+           EMPÊCHER LE SCROLL HORIZONTAL DU SITE
+        ===================================================== */
+
+        window.addEventListener(
+            "load",
+            function () {
+
+                document.body.style.overflowX =
+                    "hidden";
+
+            }
+        );
 
     </script>
 
