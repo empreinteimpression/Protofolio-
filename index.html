@@ -29,7 +29,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -138,10 +138,20 @@
         .categories {
             display: flex;
             justify-content: center;
-            gap: 50px;
-            padding: 60px 0;
+            gap: 30px;
+            padding: 42px 0;
             flex-wrap: wrap;
             border-bottom: 1px solid #e8e6e0;
+            background: rgba(250, 248, 243, 0.92);
+        }
+
+        .category-container {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 42px;
+            flex-wrap: wrap;
         }
 
         .category-link {
@@ -168,70 +178,76 @@
             padding-bottom: 5px;
         }
 
-        /* Gallery Section */
+        /* Gallery Section — premium editorial layout */
         .gallery-section {
-            padding: 80px 0;
+            padding: 90px 0 110px;
         }
 
         .gallery-title {
-            font-size: 32px;
-            margin-bottom: 50px;
+            font-size: clamp(30px, 4vw, 42px);
+            margin-bottom: 16px;
             text-align: center;
-            color: #000;
-            font-weight: 300;
-            letter-spacing: 1px;
+            color: #171717;
+            font-weight: 400;
+            letter-spacing: 1.5px;
         }
 
         .gallery-description {
             text-align: center;
-            color: #666;
-            margin-bottom: 60px;
+            color: #777;
+            margin-bottom: 55px;
             font-size: 15px;
-            line-height: 1.8;
-            max-width: 700px;
+            line-height: 1.9;
+            max-width: 680px;
             margin-left: auto;
             margin-right: auto;
         }
 
+        /* Masonry-style columns: preserves every original image ratio */
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 80px;
+            columns: 3 320px;
+            column-gap: 24px;
+            margin-bottom: 20px;
         }
 
         .gallery-item {
             position: relative;
+            break-inside: avoid;
+            margin: 0 0 24px;
             overflow: hidden;
-            background: #e8e6e0;
-            aspect-ratio: 1;
+            background: #efede8;
+            border-radius: 2px;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
 
         .gallery-item:hover {
-            transform: scale(1.02);
+            transform: translateY(-4px);
+            box-shadow: 0 14px 38px rgba(0, 0, 0, 0.10);
         }
 
         .gallery-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
             display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.015);
         }
 
         .gallery-item-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0.02) 45%);
             opacity: 0;
             transition: opacity 0.3s ease;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-end;
+            justify-content: flex-end;
+            padding: 18px;
         }
 
         .gallery-item:hover .gallery-item-overlay {
@@ -241,47 +257,93 @@
         .gallery-item-overlay span {
             color: #fff;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            header {
+                padding: 18px 0;
+            }
+
             nav {
                 gap: 15px;
             }
 
             .logo {
-                font-size: 18px;
+                font-size: 17px;
             }
 
             .nav-menu {
-                gap: 20px;
+                gap: 12px;
+            }
+
+            .hero {
+                padding: 95px 0;
+                background-attachment: scroll;
             }
 
             .hero h1 {
-                font-size: 36px;
+                font-size: 34px;
+            }
+
+            .gallery-section {
+                padding: 65px 0 80px;
             }
 
             .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+                columns: 2 220px;
+                column-gap: 16px;
+            }
+
+            .gallery-item {
+                margin-bottom: 16px;
             }
 
             .categories {
-                gap: 20px;
-                padding: 40px 0;
+                padding: 30px 0;
+            }
+
+            .categories .container {
+                gap: 14px !important;
             }
 
             .nav-menu a {
-                font-size: 12px;
+                font-size: 11px;
+            }
+
+            .contact-btn {
+                padding: 9px 15px;
             }
         }
 
         @media (max-width: 480px) {
+            .container {
+                padding: 0 14px;
+            }
+
             .gallery-grid {
-                grid-template-columns: 1fr;
+                columns: 1;
+                column-gap: 0;
+            }
+
+            .gallery-item {
+                margin-bottom: 16px;
+            }
+
+            .gallery-title {
+                font-size: 30px;
+            }
+
+            .gallery-description {
+                margin-bottom: 38px;
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 80px 0;
             }
 
             .hero h1 {
@@ -289,21 +351,43 @@
             }
 
             nav {
-                gap: 10px;
+                gap: 8px;
             }
 
             .logo {
-                font-size: 15px;
-                letter-spacing: 0.5px;
+                font-size: 14px;
+                letter-spacing: 0;
             }
 
             .nav-menu {
-                gap: 10px;
-                font-size: 12px;
+                gap: 8px;
+            }
+
+            .nav-menu a {
+                font-size: 10px;
             }
 
             .contact-btn {
-                padding: 10px 20px;
+                padding: 8px 11px;
+                font-size: 10px;
+            }
+
+            .categories .container {
+                display: flex !important;
+                justify-content: flex-start !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto;
+                gap: 24px !important;
+                padding-bottom: 8px;
+                scrollbar-width: none;
+            }
+
+            .categories .container::-webkit-scrollbar {
+                display: none;
+            }
+
+            .category-link {
+                flex: 0 0 auto;
                 font-size: 11px;
             }
         }
@@ -494,7 +578,7 @@
     </section>
 
     <section class="categories" id="galeries">
-        <div class="container" style="width: 100%; text-align: center; display: flex; justify-content: center; gap: 50px; flex-wrap: wrap;">
+        <div class="container category-container">
             <button class="category-link active" data-category="mariage">Mariage</button>
             <button class="category-link" data-category="portrait">Portrait</button>
             <button class="category-link" data-category="couple">Couple</button>
@@ -512,7 +596,7 @@
                 Des moments volés du plus beau jour de votre vie. Discrétion, élégance et émotion à travers chaque cliché.
             </p>
             <div class="gallery-grid">
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'images/mariage/FB_IMG_1788289733110.jpg')">
+                <div class="gallery-item" onclick="openLightbox(this, 'images/mariage/FB_IMG_1788289733110.jpg')">
                     <img src="images/mariage/FB_IMG_1788289733110.jpg" alt="Mariage 1">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -520,15 +604,15 @@
                     <img src="images/mariage/FB_IMG_1788289760373.jpg" alt="Mariage 2">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'images/mariage/FB_IMG_1788289837930.jpg')">
+                <div class="gallery-item" onclick="openLightbox(this, 'images/mariage/FB_IMG_1788289837930.jpg')">
                     <img src="images/mariage/FB_IMG_1788289837930.jpg" alt="Mariage 3">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'images/mariage/FB_IMG_1788289857757.jpg')">
+                <div class="gallery-item" onclick="openLightbox(this, 'images/mariage/FB_IMG_1788289857757.jpg')">
                     <img src="images/mariage/FB_IMG_1788289857757.jpg" alt="Mariage 4">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'images/mariage/FB_IMG_1788289872537.jpg')">
+                <div class="gallery-item" onclick="openLightbox(this, 'images/mariage/FB_IMG_1788289872537.jpg')">
                     <img src="images/mariage/FB_IMG_1788289872537.jpg" alt="Mariage 5">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -536,7 +620,7 @@
                     <img src="images/mariage/FB_IMG_1788289952279.jpg" alt="Mariage 6">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'images/mariage/FB_IMG_1788289963148.jpg')">
+                <div class="gallery-item" onclick="openLightbox(this, 'images/mariage/FB_IMG_1788289963148.jpg')">
                     <img src="images/mariage/FB_IMG_1788289963148.jpg" alt="Mariage 7">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -549,7 +633,7 @@
                 Révéler votre essence à travers des portraits authentiques et lumineux en lumière naturelle.
             </p>
             <div class="gallery-grid">
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=800&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=800&fit=crop" alt="Portrait 1">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -557,15 +641,15 @@
                     <img src="https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?w=600&h=600&fit=crop" alt="Portrait 2">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1470886185043-a9bcde4e98df?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1470886185043-a9bcde4e98df?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1470886185043-a9bcde4e98df?w=800&h=600&fit=crop" alt="Portrait 3">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop" alt="Portrait 4">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop" alt="Portrait 5">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -573,11 +657,11 @@
                     <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=600&fit=crop" alt="Portrait 6">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1520763185298-1b434c919abe?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1520763185298-1b434c919abe?w=600&h=800&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1520763185298-1b434c919abe?w=600&h=800&fit=crop" alt="Portrait 7">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1516035069371-29a08e8db338?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1516035069371-29a08e8db338?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1516035069371-29a08e8db338?w=800&h=600&fit=crop" alt="Portrait 8">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -594,7 +678,7 @@
                 Immortaliser l'amour et la tendresse entre deux êtres. Des séances empreintes de complicité et d'émotion.
             </p>
             <div class="gallery-grid">
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1522102073099-fc3ee2dc1d3d?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1522102073099-fc3ee2dc1d3d?w=600&h=800&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1522102073099-fc3ee2dc1d3d?w=600&h=800&fit=crop" alt="Couple 1">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -602,15 +686,15 @@
                     <img src="https://images.unsplash.com/photo-1516019266335-30265b3d4e65?w=600&h=600&fit=crop" alt="Couple 2">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&h=600&fit=crop" alt="Couple 3">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1552821206-e0b85cc2aadb?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1552821206-e0b85cc2aadb?w=600&h=800&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1552821206-e0b85cc2aadb?w=600&h=800&fit=crop" alt="Couple 4">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop" alt="Couple 5">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -618,11 +702,11 @@
                     <img src="https://images.unsplash.com/photo-1489749798305-4fea3ba63d60?w=600&h=600&fit=crop" alt="Couple 6">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1522853556640-164d72e9e35e?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1522853556640-164d72e9e35e?w=600&h=800&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1522853556640-164d72e9e35e?w=600&h=800&fit=crop" alt="Couple 7">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=600&fit=crop" alt="Couple 8">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -639,11 +723,11 @@
                 Capturer les sourires, les rires et les liens qui unissent votre famille dans leurs plus beaux moments.
             </p>
             <div class="gallery-grid">
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=800&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=800&fit=crop" alt="Famille 1">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=800&h=600&fit=crop" alt="Famille 2">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -651,11 +735,11 @@
                     <img src="https://images.unsplash.com/photo-1513325369-16695b6ba4d2?w=600&h=600&fit=crop" alt="Famille 3">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1475536221683-0d5656e9d504?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1475536221683-0d5656e9d504?w=600&h=800&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1475536221683-0d5656e9d504?w=600&h=800&fit=crop" alt="Famille 4">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1515995471585-351684cd2e8f?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1515995471585-351684cd2e8f?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1515995471585-351684cd2e8f?w=800&h=600&fit=crop" alt="Famille 5">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -663,11 +747,11 @@
                     <img src="https://images.unsplash.com/photo-1503454537688-e6ba5f287842?w=600&h=600&fit=crop" alt="Famille 6">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1507656961167-fc0cad96a560?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1507656961167-fc0cad96a560?w=600&h=800&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1507656961167-fc0cad96a560?w=600&h=800&fit=crop" alt="Famille 7">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1493103671537-7e0e40907d23?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1493103671537-7e0e40907d23?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1493103671537-7e0e40907d23?w=800&h=600&fit=crop" alt="Famille 8">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -684,7 +768,7 @@
                 Célébrer la beauté de l'attente. Des séances douces et tendres pour immortaliser ce moment magique.
             </p>
             <div class="gallery-grid">
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1475253990210-e1da6d5bcd63?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1475253990210-e1da6d5bcd63?w=600&h=800&fit=crop')">
                     <img src="https://www.facebook.com/share/1CsjHtTesQ/" alt="Grossesse 1">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -692,15 +776,15 @@
                     <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&h=600&fit=crop" alt="Grossesse 2">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=600&fit=crop" alt="Grossesse 3">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop" alt="Grossesse 4">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&h=600&fit=crop" alt="Grossesse 5">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -708,11 +792,11 @@
                     <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=600&fit=crop" alt="Grossesse 6">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1493103671537-7e0e40907d23?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1493103671537-7e0e40907d23?w=600&h=800&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1493103671537-7e0e40907d23?w=600&h=800&fit=crop" alt="Grossesse 7">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1516321318423-f06f70504504?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1516321318423-f06f70504504?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1516321318423-f06f70504504?w=800&h=600&fit=crop" alt="Grossesse 8">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -729,11 +813,11 @@
                 Les plus beaux décors naturels capturés pour sublimer vos souvenirs. Lumière dorée et horizons enchanteurs.
             </p>
             <div class="gallery-grid">
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=800&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=800&fit=crop" alt="Paysage 1">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1469022563149-aa64dbd37dae?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1469022563149-aa64dbd37dae?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1469022563149-aa64dbd37dae?w=800&h=600&fit=crop" alt="Paysage 2">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -741,11 +825,11 @@
                     <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=600&fit=crop" alt="Paysage 3">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=600&h=800&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=600&h=800&fit=crop" alt="Paysage 4">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" alt="Paysage 5">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
@@ -753,11 +837,11 @@
                     <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=600&h=600&fit=crop" alt="Paysage 6">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 3/4;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=800&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=800&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=800&fit=crop" alt="Paysage 7">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
-                <div class="gallery-item" style="aspect-ratio: 4/3;" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1485229607352-3a38e1ff0784?w=800&h=600&fit=crop')">
+                <div class="gallery-item" onclick="openLightbox(this, 'https://images.unsplash.com/photo-1485229607352-3a38e1ff0784?w=800&h=600&fit=crop')">
                     <img src="https://images.unsplash.com/photo-1485229607352-3a38e1ff0784?w=800&h=600&fit=crop" alt="Paysage 8">
                     <div class="gallery-item-overlay"><span>Voir</span></div>
                 </div>
